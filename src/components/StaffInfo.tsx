@@ -27,8 +27,10 @@ export const StaffInfo = ({
         <img src={image} alt="image of person" />
         <div className="space-y-4">
           <div
-            className={`space-y-4 relative header ${
-              side === "left" ? "" : "before:left-0 before:right-[-10%]"
+            className={`flex flex-col gap-4 relative header ${
+              side === "left"
+                ? ""
+                : "items-end before:left-0 before:right-[-10%]"
             }`}
           >
             <h3 className="flex gap-3 text-[56px] leading-[.877em]">
@@ -39,7 +41,13 @@ export const StaffInfo = ({
               {name}
             </h4>
           </div>
-          <p className="font-crimson leading-[1.5em] px-4">{description}</p>
+          <p
+            className={`font-crimson leading-[1.5em] px-4 ${
+              side === "left" ? "text-left" : "text-right"
+            }`}
+          >
+            {description}
+          </p>
         </div>
       </div>
     </div>
