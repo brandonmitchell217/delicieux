@@ -3,6 +3,57 @@ import Layout from '../layouts/Layout.astro';
 import { Landing } from "../components/Landing";
 import { Nav } from "../components/Nav";
 import {PropSlalom} from '../components/PropSlalom'
+import { ChefsTable } from "../components/ChefsTable";
+import { InterstitialImg } from "../components/InterstitialImg";
+import { Row } from "../components/Row";
+import { StaffInfo } from "../components/StaffInfo";
+
+
+const desc = "Lorem ipsum dolor sit amet consectetur. Nisl diam pellentesque proin id lectus fermentum. Quisque amet blandit senectus arcu faucibus ut. Massa rhoncus dui aliquam sed. Vitae porttitor aliquet turpis id quam dolor hac massa mi. Malesuada netus vitae lobortis in blandit. Nibh elementum tellus nec aenean senectus leo massa."
+const button = {label: "Check out our menu", url: '/'}
+
+const staff = [
+	{
+		id: 1,
+		title: 'Chef',
+		name: 'Jared Steen',
+		description: 'With accolades from the Goodyear Guide early in his career, Jared has firmly established himself as a visionary in the world of fine dining. After having graduated from the Culinary Institute of America, he spent three years immersed working in different restaurants across Paris. With over 12 years in the industry, Chef Jared brings a high level of passion & skill into his delicious culinary experiences.',
+		image: '/chef.png',
+		icon: '/knife.svg'
+	},
+	{
+		id: 2,
+		title: 'Sous',
+		name: 'Andrew Hemingway',
+		description: "With a career spanning over seven years in the culinary scene of New York, Chef Hemingway brings a wealth of experience and expertise to our kitchen. While Andrew isn't a man of many words, his culinary genius speaks volumes.",
+		image: '/sous.png',
+		icon: '/thongs.svg'
+	},
+	{
+		id: 3,
+		title: 'Pastry Chef',
+		name: 'Gerard Lambert',
+		description: "Chef Gerard's life has revolved around pastries & bread ever since childhood. His father took over their family's bakery & so began Gerard's culinary journey. Building on his natural talent, Gerard sought to refine his skills and expand his horizons, leading him to spend two transformative years learning under the esteemed pastry chef Elizabeth Falkner.",
+		image: '/pastry.png',
+		icon: '/rollingPin.svg'
+	},
+	{
+		id: 4,
+		title: 'Director',
+		name: 'Rebecca Horton',
+		description: 'What often gets overlooked in a restaurant is all that really goes in to keeping it together. Rebecca is the master & keeper of everything that makes Délicieux run on a day-to-day basis. With a 10 years of experience & a Masters in Business Administration, she is responsible for everything from bookings to communicating finances between the kitchen & front of the house.',
+		image: '/director.png',
+		icon: '/computer.svg'
+	},
+]
+
+function determineSide(index: number) {
+	if (index === 0 || index === 2) {
+		return 'left'
+	} else if (index === 1 || index === 3) {
+		return 'right'
+	}
+}
 ---
 
 
@@ -11,21 +62,43 @@ import {PropSlalom} from '../components/PropSlalom'
 <Layout title="Delicieux - A French Restaurant">
 	<Nav />
 	<main>
-		<section class="max-w-[1209px] m-auto space-y-16">
+		<section class="space-y-16">
 			<Landing />
 			<img src="/fancyLines1.png" alt="fancy lines" class="max-w-[550px] h-auto m-auto">
 		</section>
 		<section>
-			<PropSlalom title="Qualité" description="Lorem ipsum dolor sit amet consectetur. Nisl diam pellentesque proin id lectus fermentum. Quisque amet blandit senectus arcu faucibus ut. Massa rhoncus dui aliquam sed. Vitae porttitor aliquet turpis id quam dolor hac massa mi. Malesuada netus vitae lobortis in blandit. Nibh elementum tellus nec aenean senectus leo massa." link={{label: "Check out our menu", url: '/'}} image="/quality.png" />
+			<PropSlalom title="Qualité" description={desc} link={button} image="/quality.png" />
+		</section>
+		<section class="">
+			<ChefsTable />
+		</section>
+		<InterstitialImg label="Restaurant" src="/interstitial.png" />
+		<section>
+			{staff.map((person, index) => {
+				return (
+					<Row side={determineSide(index)}>
+						<StaffInfo image={person.image} title={person.title} name={person.name} description={person.description} icon={person.icon} side={determineSide(index)} />
+					</Row>
+				)
+			})}
 		</section>
 	</main>
 </Layout>
 
-<style>
-	main {
+<style is:global>
+section {
+	@apply max-w-[1209px] m-auto;
+}
 
-
-
-	}
+.header::before {
+	content: '';
+	position: absolute;
+	top: -14px;
+	left: -10%;
+	z-index: -1;
+	height: 2px;
+	width: 110%;
+	background-color: #0C1013;
+}
 
 </style>

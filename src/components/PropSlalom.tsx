@@ -19,7 +19,7 @@ export const PropSlalom = ({
   side = "left",
 }: Props) => {
   return (
-    <div className="max-w-[1209px] m-auto py-24">
+    <div className="py-24">
       <div
         className={`w-full flex ${
           side === "left" ? null : "flex-row-reverse"
