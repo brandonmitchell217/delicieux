@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Landing } from "../components/Landing";
+import { Nav } from "../components/Nav";
+import {PropSlalom} from '../components/PropSlalom'
+---
+
+
+
+
+<Layout title="Delicieux - A French Restaurant">
+	<Nav />
+	<main>
+		<section class="max-w-[1209px] m-auto space-y-16">
+			<Landing />
+			<img src="/fancyLines1.png" alt="fancy lines" class="max-w-[550px] h-auto m-auto">
+		</section>
+		<section>
+			<PropSlalom title="Qualité" description="Lorem ipsum dolor sit amet consectetur. Nisl diam pellentesque proin id lectus fermentum. Quisque amet blandit senectus arcu faucibus ut. Massa rhoncus dui aliquam sed. Vitae porttitor aliquet turpis id quam dolor hac massa mi. Malesuada netus vitae lobortis in blandit. Nibh elementum tellus nec aenean senectus leo massa." link={{label: "Check out our menu", url: '/'}} image="/quality.png" />
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+
+
+
+	}
+
+</style>
