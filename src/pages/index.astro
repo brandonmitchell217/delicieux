@@ -7,12 +7,13 @@ import { ChefsTable } from "../components/ChefsTable";
 import { InterstitialImg } from "../components/InterstitialImg";
 import { Row } from "../components/Row";
 import { StaffInfo } from "../components/StaffInfo";
+import { Footer } from "../components/Footer";
 
 
-const desc = "Lorem ipsum dolor sit amet consectetur. Nisl diam pellentesque proin id lectus fermentum. Quisque amet blandit senectus arcu faucibus ut. Massa rhoncus dui aliquam sed. Vitae porttitor aliquet turpis id quam dolor hac massa mi. Malesuada netus vitae lobortis in blandit. Nibh elementum tellus nec aenean senectus leo massa."
-const button = {label: "Check out our menu", url: '/'}
+const desc: string = "Lorem ipsum dolor sit amet consectetur. Nisl diam pellentesque proin id lectus fermentum. Quisque amet blandit senectus arcu faucibus ut. Massa rhoncus dui aliquam sed. Vitae porttitor aliquet turpis id quam dolor hac massa mi. Malesuada netus vitae lobortis in blandit. Nibh elementum tellus nec aenean senectus leo massa."
+const button: {label: string; url: string;} = {label: "Check out our menu", url: '/'}
 
-const staff = [
+const staff: {id: number; title: string; name: string; description: string; image: string; icon: string;}[] = [
 	{
 		id: 1,
 		title: 'Chef',
@@ -48,9 +49,10 @@ const staff = [
 ]
 
 function determineSide(index: number) {
-	return index % 2 == 0 ? 'left' : 'right'
+	return index % 2 == 0 ? 'right' : 'left'
 }
 ---
+
 
 
 
@@ -65,36 +67,24 @@ function determineSide(index: number) {
 		<section>
 			<PropSlalom title="Qualité" description={desc} link={button} image="/quality.png" />
 		</section>
-		<section class="">
+		<section>
 			<ChefsTable />
 		</section>
 		<InterstitialImg label="Restaurant" src="/interstitial.png" />
 		<section>
-			{staff.map((person, index) => {
+			{staff.map((person) => {
 				return (
-					<Row side={determineSide(index)}>
-						<StaffInfo image={person.image} title={person.title} name={person.name} description={person.description} icon={person.icon} side={determineSide(index)} />
+					<Row side={determineSide(person.id)}>
+						<StaffInfo image={person.image} title={person.title} name={person.name} description={person.description} icon={person.icon} side={determineSide(person.id)} />
 					</Row>
 				)
 			})}
 		</section>
 	</main>
+	<Footer />
 </Layout>
 
 <style is:global>
-section {
-	@apply max-w-[1209px] m-auto;
-}
 
-.header::before {
-	content: '';
-	position: absolute;
-	top: -14px;
-	left: -10%;
-	z-index: -1;
-	height: 2px;
-	width: 110%;
-	background-color: #0C1013;
-}
 
 </style>

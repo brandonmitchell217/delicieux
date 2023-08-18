@@ -1,4 +1,5 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
   title: string;
@@ -21,9 +22,9 @@ export const PropSlalom = ({
   return (
     <div className="py-24">
       <div
-        className={`w-full flex ${
-          side === "left" ? null : "flex-row-reverse"
-        } justify-center items-center`}
+        className={`w-full flex justify-center items-center ${
+          side === "left" ? null : twMerge("flex-row-reverse")
+        } `}
       >
         <div className="flex-1 flex flex-col">
           <h2 className="relative font-crimson font-bold text-[144px] leading-[.877em] w-max">

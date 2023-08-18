@@ -1,4 +1,5 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
   image: string;
@@ -21,7 +22,7 @@ export const StaffInfo = ({
     <div>
       <div
         className={`flex gap-[30px] items-center max-w-[868px] ${
-          side === "left" ? "flex-row" : "flex-row-reverse"
+          side === "left" ? twMerge("flex-row") : twMerge("flex-row-reverse")
         }`}
       >
         <img src={image} alt="image of person" />
@@ -30,10 +31,14 @@ export const StaffInfo = ({
             className={`flex flex-col gap-4 relative header ${
               side === "left"
                 ? ""
-                : "items-end before:left-0 before:right-[-10%]"
+                : twMerge("items-end before:left-0 before:right-[-10%]")
             }`}
           >
-            <h3 className="flex gap-3 text-[56px] leading-[.877em]">
+            <h3
+              className={`flex gap-3 text-[56px] leading-[.877em] ${
+                side === "left" ? twMerge("row") : twMerge("flex-row-reverse")
+              }`}
+            >
               {title}
               <img src={icon ?? "/knife.svg"} alt="icon image" />
             </h3>
@@ -43,7 +48,7 @@ export const StaffInfo = ({
           </div>
           <p
             className={`font-crimson leading-[1.5em] px-4 ${
-              side === "left" ? "text-left" : "text-right"
+              side === "left" ? twMerge("text-left") : twMerge("text-right")
             }`}
           >
             {description}
