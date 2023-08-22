@@ -2,7 +2,7 @@ import React from "react";
 
 export const Landing = () => {
   return (
-    <div className="bg-landingMobile sm:bg-landing bg-cover bg-top sm:bg-center bg-no-repeat min-h-[90vh] md:min-h-[55vh] xl:min-h-[85vh] w-full text-light flex items-end pb-16 px-4 sm:px-16">
+    <div className="bg-landingMobile sm:bg-landing bg-cover bg-top sm:bg-center bg-no-repeat min-h-[90vh] md:min-h-[55vh] lg:min-h-[85vh] w-full text-light flex items-end pb-16 px-4 sm:px-16">
       <div className="w-full flex flex-col sm:flex-row items-center sm:items-stretch  gap-6 sm:gap-0">
         <h1 className="text-[48px] lg:text-[56px] xl:text-[66px] leading-[.877em] font-bold font-crimson">
           Fine Wine & an

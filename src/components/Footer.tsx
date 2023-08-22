@@ -20,15 +20,15 @@ export const Footer = () => {
     },
   ];
   return (
-    <footer className="bg-darkGray pt-14 pb-8 text-light">
+    <footer className="bg-darkGray pt-14 pb-8 px-4 xl:px-0 text-light">
       <section className="flex flex-col gap-10">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 items-center justify-center lg:justify-between">
           <img
             src="/logo_nav.svg"
             alt="Logo image"
             className="w-[253px] h-auto"
           />
-          <ul className="flex gap-16 text-[24px]">
+          <ul className="flex gap-6 lg:gap-16 text-base md:text-[18px] xl:text-[24px]">
             <li>
               <a href="/">About Us</a>
             </li>
@@ -41,8 +41,8 @@ export const Footer = () => {
           </ul>
         </div>
 
-        <div className="max-w-[85%] w-full m-auto flex items-center justify-between">
-          <div className="flex items-center gap-8">
+        <div className="max-w-[85%] md:max-w-[65%] lg:max-w-[85%] w-full m-auto flex flex-col lg:flex-row items-center justify-between">
+          <div className="w-full flex flex-col lg:flex-row lg:items-center gap-8">
             <img src="/map.jpg" alt="image of a map" />
             <div>
               <div>
@@ -67,7 +67,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="text-center space-y-2">
+          <div className="py-8 md:py-0 text-center space-y-2">
             <div>
               <h6 className="font-semibold font-crimson text-[20px]">
                 Hours of Operation:
@@ -84,14 +84,14 @@ export const Footer = () => {
             </div>
             <a
               href="/"
-              className="inline-block font-semibold text-[20px] border-b-2 border-b-red"
+              className="inline-block pt-6 md:pt-0 font-semibold text-[28px] lg:text-[20px] border-b-2 border-b-red"
             >
               Reservations
             </a>
           </div>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 justify-center items-center lg:items-stretch lg:justify-between">
           <div className="flex gap-4 items-center">
             {Socials.map((social) => (
               <a href={social.link} key={social.name}>
