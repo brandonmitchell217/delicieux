@@ -21,14 +21,14 @@ export const Footer = () => {
   ];
   return (
     <footer className="bg-darkGray pt-14 pb-8 px-4 xl:px-0 text-light">
-      <section className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 max-w-[1280px] m-auto">
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 items-center justify-center lg:justify-between">
           <img
             src="/logo_nav.svg"
             alt="Logo image"
             className="w-[253px] h-auto"
           />
-          <ul className="flex gap-6 lg:gap-16 text-base md:text-[18px] xl:text-[24px]">
+          <ul className="pt-1 lg:pt-0 flex gap-6 lg:gap-16 text-base md:text-[18px] xl:text-[24px] border-t border-light lg:border-0">
             <li>
               <a href="/">About Us</a>
             </li>
@@ -105,7 +105,7 @@ export const Footer = () => {
             </p>
           </div>
         </div>
-      </section>
+      </div>
     </footer>
   );
 };

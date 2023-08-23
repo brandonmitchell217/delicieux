@@ -21,9 +21,9 @@ export const PropSlalom = ({
 }: Props) => {
   // TODO: FIX THIS TWMERGE
   return (
-    <div className="py-24 px-4 md:px-12 xl:px-4">
+    <div className="pt-32 pb-20 px-4 md:px-12 xl:px-4">
       <div
-        className={`w-full flex flex-col md:flex-row md:gap-8 lg:gap-0 justify-center items-center ${
+        className={`w-full flex flex-col md:flex-row gap-12 md:gap-8 lg:gap-0 justify-center items-center ${
           side === "left" ? null : twMerge("flex-row-reverse")
         } `}
       >

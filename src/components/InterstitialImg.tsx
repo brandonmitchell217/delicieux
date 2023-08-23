@@ -7,7 +7,7 @@ interface Props {
 
 export const InterstitialImg = ({ label, src }: Props) => {
   return (
-    <div className="w-full my-10 py-10 bg-dark">
+    <div className="max-w-[2000px] m-auto w-full md:my-10 py-10">
       <img
         src={src}
         alt={label ? `${label} image` : "Image of restaurant"}

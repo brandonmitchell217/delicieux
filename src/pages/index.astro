@@ -60,9 +60,9 @@ function determineSide(index: number) {
 <Layout title="Delicieux - A French Restaurant">
 	<Nav />
 	<main>
-		<section class="space-y-16">
+		<section class="space-y-24">
 			<Landing />
-			<img src="/fancyLines1.png" alt="fancy lines" class="w-full md:max-w-[550px] h-auto m-auto">
+			<img src="/fancyLines1.png" alt="fancy lines" class="w-[90%] md:max-w-[550px] h-auto m-auto">
 		</section>
 		<section>
 			<PropSlalom title="Qualité" description={desc} link={button} image="/quality.png" />
@@ -70,8 +70,8 @@ function determineSide(index: number) {
 		<section>
 			<ChefsTable />
 		</section>
-		<InterstitialImg label="Restaurant" src="/interstitial.png" />
-		<section>
+		<InterstitialImg label="Restaurant" src="/interstitial.jpg" />
+		<section id="Staff">
 			{staff.map((person) => {
 				return (
 					<Row side={determineSide(person.id)}>
@@ -84,7 +84,9 @@ function determineSide(index: number) {
 	<Footer />
 </Layout>
 
-<style is:global>
-
+<style>
+section {
+	@apply max-w-7xl m-auto;
+}
 
 </style>
