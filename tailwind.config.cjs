@@ -16,8 +16,8 @@ module.exports = {
         sans: ["Open Sans", "sans-serif", ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
-        landing: "url('/landing.png')",
-        landingMobile: "url('/landing_mobile.png')",
+        landing: "url('/landing.jpg')",
+        landingMobile: "url('/landing_mobile.jpg')",
       },
     },
   },

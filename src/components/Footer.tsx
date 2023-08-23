@@ -101,7 +101,10 @@ export const Footer = () => {
           </div>
           <div>
             <p>
-              Design & code by <a href="/">Brandon</a>
+              Design & code by{" "}
+              <a href="/" className="hover:text-[#c2f73b] transition-colors">
+                Brandon
+              </a>
             </p>
           </div>
         </div>

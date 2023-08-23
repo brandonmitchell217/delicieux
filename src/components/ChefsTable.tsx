@@ -1,7 +1,5 @@
 import React from "react";
 
-// TODO: Add margin top/bottom, shadow elevation to the container
-
 export const ChefsTable = () => {
   return (
     <div className="my-5 md:my-10">
@@ -22,7 +20,7 @@ export const ChefsTable = () => {
               talented culinary artisans, as they craft a bespoke menu tailored
               to your palate.
             </p>
-            <p className="text-[14px] md:text-[16px] xl:text-[18px] leading-[1.227em]">
+            <p className="text-[13px] md:text-[16px] xl:text-[18px] leading-[1.227em]">
               Chef&apos;s Table is priced starting at $189 per person.
               <br />
               Contact us directly to create your unique experience.

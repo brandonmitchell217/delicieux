@@ -71,7 +71,7 @@ function determineSide(index: number) {
 			<ChefsTable />
 		</section>
 		<InterstitialImg label="Restaurant" src="/interstitial.jpg" />
-		<section id="Staff">
+		<section>
 			{staff.map((person) => {
 				return (
 					<Row side={determineSide(person.id)}>
