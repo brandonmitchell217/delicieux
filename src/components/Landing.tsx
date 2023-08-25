@@ -2,7 +2,7 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 export const Landing = () => {
-  // TODO: Create mobile/tablet/desktop version of landing bg
+  // TODO: Create mobile/tablet/desktop version of landing bg, also a new fancy line
   const LinkStyles =
     "relative before:absolute before:-left-[104%] before:top-1/2 before:-translate-y-1/2 before:h-1 before:w-full before:bg-red before:rounded-xl";
 

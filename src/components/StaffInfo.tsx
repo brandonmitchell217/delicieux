@@ -19,7 +19,7 @@ export const StaffInfo = ({
   side = "left",
 }: Props) => {
   return (
-    <div className="pt-10 pb-16 md:py-12 px-8 md:px-4 overflow-x-hidden">
+    <div className="pt-10 pb-16 md:py-8 lg:py-16 px-8 md:px-4 overflow-x-hidden">
       <div
         className={`flex flex-col gap-8 lg:gap-[30px] justify-center md:justify-stretch items-center md:max-w-[868px] ${
           side === "left"
@@ -49,7 +49,7 @@ export const StaffInfo = ({
               <img
                 src={icon ?? "/knife.svg"}
                 alt="icon image"
-                className="w-6 sm:w-10 h-auto"
+                className="w-6 sm:w-10 h-auto drop-shadow-sm xl:drop-shadow-lg"
               />
             </h3>
             <h4 className="font-crimson font-bold text-[24px] sm:text-[32px] lg:text-[48px] leading-[.877em] border-b-2 border-dark border-spacing-3 sm:border-none">

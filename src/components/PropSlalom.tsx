@@ -60,9 +60,10 @@ export const PropSlalom = ({
           <img
             src={image}
             alt={`${title} image`}
-            className="shadow-md max-w-[355px] w-[40vw] md:w-[30vw] h-auto"
+            loading="lazy"
+            className="shadow-sm max-w-[355px] w-[40vw] md:w-[30vw] h-auto"
           />
-          <div className="absolute -z-10 -right-6 -top-4 h-full w-full border-2 border-dark rounded-2xl"></div>
+          <div className="absolute -z-10 -right-4 -top-3 h-full w-full border-2 border-dark rounded-2xl"></div>
         </div>
       </div>
     </div>
