@@ -43,7 +43,7 @@ const staff: {id: number; title: string; name: string; description: string; imag
 		id: 4,
 		title: 'Director',
 		name: 'Rebecca Horton',
-		description: 'What often gets overlooked in a restaurant is all that really goes in to keeping it together. Rebecca is the master & keeper of everything that makes Délicieux run on a day-to-day basis. With a 10 years of experience & a Masters in Business Administration, she is responsible for everything from bookings to communicating finances between the kitchen & front of the house.',
+		description: 'What often gets overlooked in a restaurant is all that really goes in to keeping it together. Rebecca is the master & keeper of everything that makes Délicieux run on a day-to-day basis. With over 10 years of experience & a Masters in Business Administration, she is responsible for everything from bookings to communicating finances between the kitchen & front of the house.',
 		image: '/director.png',
 		icon: '/computer.svg'
 	},
@@ -73,7 +73,7 @@ function determineSide(index: number) {
 			<ChefsTable />
 		</section>
 		<InterstitialImg label="Restaurant" src="/interstitial.jpg" />
-		<section>
+		<section class="pb-16">
 			{staff.map((person) => {
 				return (
 					<Row side={determineSide(person.id)}>

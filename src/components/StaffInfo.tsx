@@ -19,7 +19,7 @@ export const StaffInfo = ({
   side = "left",
 }: Props) => {
   return (
-    <div className="pt-10 pb-16 md:py-8 lg:py-16 px-8 md:px-4 overflow-x-hidden">
+    <div className="pt-10 pb-16 md:py-8 px-8 md:px-4 overflow-x-hidden">
       <div
         className={`flex flex-col gap-8 lg:gap-[30px] justify-center md:justify-stretch items-center md:max-w-[868px] ${
           side === "left"
@@ -30,7 +30,11 @@ export const StaffInfo = ({
         <img
           src={image}
           alt="image of person"
-          className="w-44 sm:w-52 h-auto lg:w-full"
+          className={`w-66 md:w-52 h-auto lg:w-full ${
+            side === "left"
+              ? twMerge("self-end md:self-stretch")
+              : twMerge("self-start md:self-stretch")
+          }`}
         />
         <div className="space-y-2 sm:space-y-4">
           <div
