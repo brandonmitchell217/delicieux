@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type PropProps = {
   title: string;
   description: string;
   link: { label: string; url: string };
-  image: string;
+  images: string[];
 };
 
 interface Props {
@@ -14,6 +14,21 @@ interface Props {
 }
 
 export const PropSlalom = ({ prop, side = "left" }: Props) => {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Increment the image index and loop back to 0 when it reaches the end
+      setImageIndex((prevIndex) => (prevIndex + 1) % prop.images.length);
+    }, 6000); // 6000 milliseconds = 6 seconds
+
+    return () => {
+      clearInterval(interval); // Clear the interval on component unmount
+    };
+  }, [prop.images.length]);
+
+  let imageSrc = prop.images[imageIndex];
+
   return (
     <div className="pt-32 pb-20 px-4 md:px-12 xl:px-4">
       <div
@@ -53,7 +68,7 @@ export const PropSlalom = ({ prop, side = "left" }: Props) => {
         </div>
         <div className="relative">
           <img
-            src={prop.image}
+            src={imageSrc}
             alt={`${prop.title} image`}
             loading="lazy"
             className="shadow-sm max-w-[355px] w-[40vw] md:w-[30vw] h-auto"
