@@ -20,7 +20,7 @@ const Prop: PropProps = {
 	title: 'Qualité',
 	description: "Lorem ipsum dolor sit amet consectetur. Nisl diam pellentesque proin id lectus fermentum. Quisque amet blandit senectus arcu faucibus ut. Massa rhoncus dui aliquam sed. Vitae porttitor aliquet turpis id quam dolor hac massa mi. Malesuada netus vitae lobortis in blandit. Nibh elementum tellus nec aenean senectus leo massa.",
 	link: {label: "Check out our menu", url: '/menu'},
-	image: '/quality.png'
+	images: ['/quality.png', '/quality2.png']
 }
 
 
@@ -75,7 +75,7 @@ const Staff: StaffProps[] = [
 			<img src="/fancyLines1.png" alt="fancy lines" class="w-[90%] md:max-w-[550px] h-auto m-auto">
 		</section>
 		<section>
-			<PropSlalom prop={Prop} />
+			<PropSlalom prop={Prop} client:load />
 		</section>
 		<section>
 			<ChefsTable />
