@@ -1,24 +1,19 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-interface Props {
+export type PropProps = {
   title: string;
   description: string;
-  link: {
-    label: string;
-    url: string;
-  };
+  link: { label: string; url: string };
   image: string;
+};
+
+interface Props {
+  prop: PropProps;
   side?: "left" | "right";
 }
 
-export const PropSlalom = ({
-  title,
-  description,
-  link,
-  image,
-  side = "left",
-}: Props) => {
+export const PropSlalom = ({ prop, side = "left" }: Props) => {
   return (
     <div className="pt-32 pb-20 px-4 md:px-12 xl:px-4">
       <div
@@ -28,18 +23,18 @@ export const PropSlalom = ({
       >
         <div className=" flex flex-col">
           <h2 className="relative font-crimson font-bold text-[88px] xl:text-[144px] leading-[.877em] w-max">
-            {title}
+            {prop.title}
             <div className="absolute -z-10 h-2.5 w-[72%] bottom-0 right-2 bg-red rounded-full"></div>
           </h2>
           <div className="lg:w-[80%] space-y-4 md:pl-8 md:pr-4 lg:pl-14 lg:pr-0">
             <p className="pt-8 text-[16px] xl:text-[24px] leading-[1.5em] tracking-[.02em] ">
-              {description}
+              {prop.description}
             </p>
             <a
-              href={link.url}
+              href={prop.link.url}
               className="md:ml-4 font-crimson text-[20px] lg:text-[28px] tracking-[.02em] flex items-center gap-4 md:gap-8 group"
             >
-              {link.label}
+              {prop.link.label}
               <svg
                 width="141"
                 height="24"
@@ -58,8 +53,8 @@ export const PropSlalom = ({
         </div>
         <div className="relative">
           <img
-            src={image}
-            alt={`${title} image`}
+            src={prop.image}
+            alt={`${prop.title} image`}
             loading="lazy"
             className="shadow-sm max-w-[355px] w-[40vw] md:w-[30vw] h-auto"
           />

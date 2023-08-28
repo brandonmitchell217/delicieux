@@ -1,23 +1,22 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-interface Props {
-  image: string;
+export interface StaffProps {
+  id: number;
   title: string;
   name: string;
   description: string;
+  image: string;
   icon: string;
-  side?: "left" | "right";
 }
 
 export const StaffInfo = ({
-  image,
-  title,
-  name,
-  description,
-  icon,
-  side = "left",
-}: Props) => {
+  person,
+  side,
+}: {
+  person: StaffProps;
+  side: string | number;
+}) => {
   return (
     <div className="pt-10 pb-16 md:py-8 px-8 md:px-4 overflow-x-hidden">
       <div
@@ -28,7 +27,7 @@ export const StaffInfo = ({
         }`}
       >
         <img
-          src={image}
+          src={person.image}
           alt="image of person"
           className={`w-66 md:w-52 h-auto lg:w-full ${
             side === "left"
@@ -45,19 +44,19 @@ export const StaffInfo = ({
             }`}
           >
             <h3
-              className={`flex flex-row-reverse gap-3 text-[32px] sm:text-[42px] lg:text-[56px] leading-[.877em] ${
+              className={`flex flex-row-reverse gap-3 text-[42px] lg:text-[56px] leading-[.877em] ${
                 side === "left" ? twMerge("md:flex-row") : ""
               }`}
             >
-              {title}
+              {person.title}
               <img
-                src={icon ?? "/knife.svg"}
+                src={person.icon ?? "/knife.svg"}
                 alt="icon image"
                 className="w-6 sm:w-10 h-auto drop-shadow-sm xl:drop-shadow-lg"
               />
             </h3>
-            <h4 className="font-crimson font-bold text-[24px] sm:text-[32px] lg:text-[48px] leading-[.877em] border-b-2 border-dark border-spacing-3 sm:border-none">
-              {name}
+            <h4 className="font-crimson font-bold text-[32px] lg:text-[48px] leading-[.877em] border-b-2 border-dark border-spacing-3 sm:border-none">
+              {person.name}
             </h4>
           </div>
           <p
@@ -65,7 +64,7 @@ export const StaffInfo = ({
               side === "left" ? twMerge("md:text-left") : ""
             }`}
           >
-            {description}
+            {person.description}
           </p>
         </div>
       </div>

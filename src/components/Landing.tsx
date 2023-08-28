@@ -28,6 +28,7 @@ export const Landing = () => {
           </div>
         </div>
 
+        {/* button buttons */}
         <div className="flex flex-col gap-4 items-center text-center  text-lg lg:hidden">
           <a
             href="/"
@@ -37,7 +38,7 @@ export const Landing = () => {
           </a>
           <a
             href="/"
-            className="bg-transparent p-4 w-72 rounded-lg border border-light hover:bg-dark hover:border-dark transition-colors"
+            className="bg-light text-dark p-4 w-72 rounded-lg border border-light hover:bg-transparent hover:text-light transition-colors"
           >
             Contact Us
           </a>
