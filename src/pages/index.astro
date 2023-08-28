@@ -2,19 +2,29 @@
 import Layout from '../layouts/Layout.astro';
 import { Landing } from "../components/Landing";
 import { Nav } from "../components/Nav";
-import {PropSlalom} from '../components/PropSlalom'
+import {PropSlalom, PropProps} from '../components/PropSlalom'
 import { ChefsTable } from "../components/ChefsTable";
 import { InterstitialImg } from "../components/InterstitialImg";
 import { Row } from "../components/Row";
-import { StaffInfo } from "../components/StaffInfo";
+import { StaffInfo, StaffProps } from "../components/StaffInfo";
 import { Footer } from "../components/Footer";
 import Banner from "../components/Banner";
 
+function determineSide(index: number) {
+	return index % 2 == 0 ? 'right' : 'left'
+}
 
-const desc: string = "Lorem ipsum dolor sit amet consectetur. Nisl diam pellentesque proin id lectus fermentum. Quisque amet blandit senectus arcu faucibus ut. Massa rhoncus dui aliquam sed. Vitae porttitor aliquet turpis id quam dolor hac massa mi. Malesuada netus vitae lobortis in blandit. Nibh elementum tellus nec aenean senectus leo massa."
-const button: {label: string; url: string;} = {label: "Check out our menu", url: '/menu'}
 
-const staff: {id: number; title: string; name: string; description: string; image: string; icon: string;}[] = [
+
+const Prop: PropProps = {
+	title: 'Qualité',
+	description: "Lorem ipsum dolor sit amet consectetur. Nisl diam pellentesque proin id lectus fermentum. Quisque amet blandit senectus arcu faucibus ut. Massa rhoncus dui aliquam sed. Vitae porttitor aliquet turpis id quam dolor hac massa mi. Malesuada netus vitae lobortis in blandit. Nibh elementum tellus nec aenean senectus leo massa.",
+	link: {label: "Check out our menu", url: '/menu'},
+	image: '/quality.png'
+}
+
+
+const Staff: StaffProps[] = [
 	{
 		id: 1,
 		title: 'Chef',
@@ -49,9 +59,7 @@ const staff: {id: number; title: string; name: string; description: string; imag
 	},
 ]
 
-function determineSide(index: number) {
-	return index % 2 == 0 ? 'right' : 'left'
-}
+
 ---
 
 
@@ -67,17 +75,17 @@ function determineSide(index: number) {
 			<img src="/fancyLines1.png" alt="fancy lines" class="w-[90%] md:max-w-[550px] h-auto m-auto">
 		</section>
 		<section>
-			<PropSlalom title="Qualité" description={desc} link={button} image="/quality.png" />
+			<PropSlalom prop={Prop} />
 		</section>
 		<section>
 			<ChefsTable />
 		</section>
 		<InterstitialImg label="Restaurant" src="/interstitial.jpg" />
 		<section class="pb-16">
-			{staff.map((person) => {
+			{Staff.map((person) => {
 				return (
 					<Row side={determineSide(person.id)}>
-						<StaffInfo image={person.image} title={person.title} name={person.name} description={person.description} icon={person.icon} side={determineSide(person.id)} />
+						<StaffInfo person={person} side={determineSide(person.id)} />
 					</Row>
 				)
 			})}
