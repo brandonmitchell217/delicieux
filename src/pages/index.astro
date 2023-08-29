@@ -16,7 +16,7 @@ const res = await client.queries.menuConnection()
 
 // const res = await client.queries.menu({relativePath: "menu.json"})
 const data = res.data.menuConnection.edges?.map((edge) => edge)
-console.log(data);
+// console.log(data);
 function determineSide(index: number) {
 	return index % 2 == 0 ? 'right' : 'left'
 }
