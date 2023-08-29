@@ -9,7 +9,14 @@ import { Row } from "../components/Row";
 import { StaffInfo, StaffProps } from "../components/StaffInfo";
 import { Footer } from "../components/Footer";
 import Banner from "../components/Banner";
+import client from "../../tina/__generated__/client";
+import TestComponent from "../components/TestComponent";
 
+const res = await client.queries.menuConnection()
+
+// const res = await client.queries.menu({relativePath: "menu.json"})
+const data = res.data.menuConnection.edges?.map((edge) => edge)
+console.log(data);
 function determineSide(index: number) {
 	return index % 2 == 0 ? 'right' : 'left'
 }
@@ -73,6 +80,7 @@ const Staff: StaffProps[] = [
 		<section class="space-y-24">
 			<Landing />
 			<img src="/fancyLines1.png" alt="fancy lines" class="w-[90%] md:max-w-[550px] h-auto m-auto">
+			<TestComponent data={data} client:load  />
 		</section>
 		<section>
 			<PropSlalom prop={Prop} client:load />
