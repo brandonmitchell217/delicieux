@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Nav } from "../components/Nav";
+import { Section } from "../components/Menu";
+import client from "../../tina/__generated__/client";
+
+const menuResponse = await client.queries.menuConnection()
+const items = menuResponse.data.menuConnection.edges?.map((item) => {
+	return { slug: item?.node }
+}) as any
+
+// const bodyText = items?.map((item) => item.slug?.body.children[0].children[0].text)
+
+console.log(items);
+
+// console.log(data);
+---
+
+<Layout title="Delicieux - A French Restaurant">
+   <Nav />
+   <main class="py-32 space-y-16">
+      <h1>Menu page</h1>
+      <Section data={items} />
+   </main>
+
+</Layout>
