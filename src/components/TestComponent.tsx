@@ -2,7 +2,7 @@ import React from "react";
 
 export default function TestComponent({ data }: any) {
   //   console.log(data);
-  //console.log(data[0].node.title);
+
   return (
     <div>
       {data.map((item: any, index: number) => (
