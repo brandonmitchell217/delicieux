@@ -1,7 +1,7 @@
 // tina/config.ts
 import { defineConfig } from "tinacms";
-var TINA_ID = process.env.TINA_ID;
-var TINA_TOKEN = process.env.TINA_TOKEN;
+var TINA_ID = process.env.NEXT_PUBLIC_TINA_ID;
+var TINA_TOKEN = process.env.NEXT_PUBLIC_TINA_TOKEN;
 var branch = process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || "main";
 var config_default = defineConfig({
   branch,

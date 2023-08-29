@@ -1,7 +1,7 @@
 import { defineConfig } from "tinacms";
 
-const TINA_ID = process.env.TINA_ID;
-const TINA_TOKEN = process.env.TINA_TOKEN;
+const TINA_ID = process.env.NEXT_PUBLIC_TINA_ID;
+const TINA_TOKEN = process.env.NEXT_PUBLIC_TINA_TOKEN;
 const branch = process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || "main";
 
 export default defineConfig({
