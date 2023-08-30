@@ -39,6 +39,11 @@ var config_default = defineConfig({
             type: "string",
             name: "price",
             label: "Price"
+          },
+          {
+            type: "string",
+            name: "type",
+            label: "Type"
           }
         ]
       }
