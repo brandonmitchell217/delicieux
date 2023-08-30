@@ -41,6 +41,11 @@ export default defineConfig({
             name: "price",
             label: "Price",
           },
+          {
+            type: "string",
+            name: "type",
+            label: "Type",
+          },
         ],
       },
     ],

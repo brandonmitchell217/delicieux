@@ -2,4 +2,5 @@ fragment MenuParts on Menu {
   title
   body
   price
+  type
 }
