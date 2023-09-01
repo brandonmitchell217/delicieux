@@ -1,4 +1,5 @@
 import React from "react";
+import Tabs from "./Tabs";
 
 interface Props {
   data?: any | undefined;
@@ -39,11 +40,11 @@ export default function Section({ data }: Props) {
       </div>
     );
   };
+
   return (
     <div className="space-y-20">
       <div className="max-w-6xl m-auto space-y-12">
         <h2 className="text-5xl font-bold">Appetizers</h2>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full px-8 lg:place-items-center">
           {data
             .filter((item: any) => item.slug.type.toLowerCase() === "appetizer")
