@@ -18,12 +18,11 @@ export const PropSlalom = ({ prop, side = "left" }: Props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Increment the image index and loop back to 0 when it reaches the end
       setImageIndex((prevIndex) => (prevIndex + 1) % prop.images.length);
-    }, 6000); // 6000 milliseconds = 6 seconds
+    }, 6000);
 
     return () => {
-      clearInterval(interval); // Clear the interval on component unmount
+      clearInterval(interval);
     };
   }, [prop.images.length]);
 

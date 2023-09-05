@@ -20,7 +20,7 @@ export const Footer = () => {
     },
   ];
   return (
-    <footer className="bg-darkGray pt-14 pb-8 px-4 xl:px-0 text-light">
+    <footer className="bg-darkGray pt-12 pb-8 px-4 xl:px-0 text-light">
       <div className="flex flex-col gap-10 max-w-[1280px] m-auto">
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 items-center justify-center lg:justify-between lg:border-b-2 lg:border-light lg:pb-4">
           <a href="/" className="group">
