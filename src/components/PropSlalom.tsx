@@ -18,12 +18,11 @@ export const PropSlalom = ({ prop, side = "left" }: Props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Increment the image index and loop back to 0 when it reaches the end
       setImageIndex((prevIndex) => (prevIndex + 1) % prop.images.length);
-    }, 6000); // 6000 milliseconds = 6 seconds
+    }, 6000);
 
     return () => {
-      clearInterval(interval); // Clear the interval on component unmount
+      clearInterval(interval);
     };
   }, [prop.images.length]);
 
@@ -32,7 +31,7 @@ export const PropSlalom = ({ prop, side = "left" }: Props) => {
   return (
     <div className="pt-32 pb-20 px-4 md:px-12 xl:px-4">
       <div
-        className={`w-full flex flex-col md:flex-row gap-12 md:gap-8 lg:gap-0 justify-center md:justify-between items-center ${
+        className={`w-full flex flex-col-reverse md:flex-row gap-12 md:gap-8 lg:gap-0 justify-center md:justify-between items-center ${
           side === "left" ? null : twMerge("flex-row-reverse")
         } `}
       >

@@ -50,7 +50,7 @@ export default defineConfig({
             type: "string",
             name: "menu",
             label: "Menu Type",
-            options: ["dinner", "brunch"],
+            options: ["dinner", "brunch", "four course"],
           },
         ],
       },

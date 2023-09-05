@@ -1,6 +1,4 @@
 import React from "react";
-// import LogoDark from '../../public/logo_dark.svg'
-// import LogoLight from '../../public/logo_nav.svg'
 
 interface Props {
   pathname?: string;
