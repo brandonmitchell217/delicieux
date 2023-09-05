@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Tabs from "./Tabs";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
@@ -9,12 +8,12 @@ interface Props {
 // test
 
 export default function Section({ data }: Props) {
-  const tabs = ["Dinner", "Brunch", "Four Course"];
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+  const tabs: string[] = ["Dinner", "Brunch", "Four Course"];
+  const [activeTab, setActiveTab] = useState<string>(tabs[0]);
 
   const Tabs = () => {
     return (
-      <div className="flex justify-between items-center max-w-[605px] m-auto">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center max-w-[605px] m-auto">
         {tabs.map((tab, index) => (
           <div
             key={index}
@@ -31,12 +30,12 @@ export default function Section({ data }: Props) {
     );
   };
 
-  function description(item: any) {
+  function description(item: Props["data"]) {
     let body = item.slug.body.children[0].children[0].text;
     return body;
   }
 
-  const itemType = data.map((item: any) => item.slug.type);
+  const itemType = data.map((item: Props["data"]) => item.slug.type);
 
   // console.log(data);
   //   console.log(
@@ -49,7 +48,12 @@ export default function Section({ data }: Props) {
     );
   };
 
-  const Card = ({ item, index }: any) => {
+  type CardProps = {
+    item: Props["data"];
+    index?: number;
+  };
+
+  const Card = ({ item, index }: CardProps) => {
     return (
       <div
         key={index}
@@ -71,24 +75,29 @@ export default function Section({ data }: Props) {
   };
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-20 px-2 sm:px-0">
       <Tabs />
       <div className="max-w-6xl m-auto space-y-12">
         <h2 className="text-5xl font-bold">Appetizers</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full px-8 lg:place-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full sm:px-8 lg:place-items-center">
           {MenuType(activeTab)
-            .filter((item: any) => item.slug.type.toLowerCase() === "appetizer")
-            .map((item: any, index: number) => (
+            .filter(
+              (item: Props["data"]) =>
+                item.slug.type.toLowerCase() === "appetizer"
+            )
+            .map((item: Props["data"], index: number) => (
               <Card item={item} key={index} />
             ))}
         </div>
       </div>
       <div className="max-w-6xl m-auto space-y-12">
         <h2 className="text-5xl font-bold">Entrees</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full px-8 lg:place-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full sm:px-8 lg:place-items-center">
           {MenuType(activeTab)
-            .filter((item: any) => item.slug.type.toLowerCase() === "entree")
-            .map((item: any, index: number) => (
+            .filter(
+              (item: Props["data"]) => item.slug.type.toLowerCase() === "entree"
+            )
+            .map((item: Props["data"], index: number) => (
               <Card item={item} key={index} />
             ))}
         </div>
