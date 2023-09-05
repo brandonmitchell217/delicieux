@@ -9,8 +9,8 @@ interface Props {
 // test
 
 export default function Section({ data }: Props) {
-  const [activeTab, setActiveTab] = useState(0);
   const tabs = ["Dinner", "Brunch", "Four Course"];
+  const [activeTab, setActiveTab] = useState(tabs[0]);
 
   const Tabs = () => {
     return (
@@ -20,9 +20,9 @@ export default function Section({ data }: Props) {
             key={index}
             className={twMerge(
               "text-xl font-semibold cursor-pointer",
-              activeTab === index && "underline"
+              activeTab === tabs[index] && "underline"
             )}
-            onClick={() => setActiveTab(index)}
+            onClick={() => setActiveTab(tabs[index])}
           >
             <span>{tab}</span>
           </div>
@@ -38,27 +38,16 @@ export default function Section({ data }: Props) {
 
   const itemType = data.map((item: any) => item.slug.type);
 
-  //   console.log(itemType);
+  // console.log(data);
   //   console.log(
   //     data.map((item: any) => item.slug.body.children[0].children[0].text)
   //   );
 
-  // const MenuType = (menu: string, type: string) => {
-  //   if (menu === 'dinner') {
-  //     return (
-  //       <div className="max-w-6xl m-auto space-y-12">
-  //         <h2 className="text-5xl font-bold"></h2>
-  //       <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full px-8 lg:place-items-center">
-  //         {data
-  //           .filter((item: any) => item.slug.type.toLowerCase() === "appetizer")
-  //           .map((item: any, index: number) => (
-  //             <Card item={item} key={index} />
-  //           ))}
-  //       </div>
-  //     </div>
-  //     )
-  //   }
-  // }
+  const MenuType = (menu: string) => {
+    return data.filter(
+      (item: any) => item.slug.menu.toLowerCase() === menu.toLowerCase()
+    );
+  };
 
   const Card = ({ item, index }: any) => {
     return (
@@ -87,7 +76,7 @@ export default function Section({ data }: Props) {
       <div className="max-w-6xl m-auto space-y-12">
         <h2 className="text-5xl font-bold">Appetizers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full px-8 lg:place-items-center">
-          {data
+          {MenuType(activeTab)
             .filter((item: any) => item.slug.type.toLowerCase() === "appetizer")
             .map((item: any, index: number) => (
               <Card item={item} key={index} />
@@ -97,7 +86,7 @@ export default function Section({ data }: Props) {
       <div className="max-w-6xl m-auto space-y-12">
         <h2 className="text-5xl font-bold">Entrees</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full px-8 lg:place-items-center">
-          {data
+          {MenuType(activeTab)
             .filter((item: any) => item.slug.type.toLowerCase() === "entree")
             .map((item: any, index: number) => (
               <Card item={item} key={index} />
