@@ -91,6 +91,7 @@ type Menu implements Node & Document {
   body: JSON
   price: String
   type: String
+  menu: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -114,6 +115,7 @@ input MenuFilter {
   body: RichTextFilter
   price: StringFilter
   type: StringFilter
+  menu: StringFilter
 }
 
 type MenuConnectionEdges {
@@ -150,6 +152,7 @@ input MenuMutation {
   body: JSON
   price: String
   type: String
+  menu: String
 }
 
 schema {

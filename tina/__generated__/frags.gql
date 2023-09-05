@@ -3,4 +3,5 @@ fragment MenuParts on Menu {
   body
   price
   type
+  menu
 }

@@ -170,6 +170,7 @@ export type Menu = Node & Document & {
   body?: Maybe<Scalars['JSON']['output']>;
   price?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
+  menu?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -193,6 +194,7 @@ export type MenuFilter = {
   body?: InputMaybe<RichTextFilter>;
   price?: InputMaybe<StringFilter>;
   type?: InputMaybe<StringFilter>;
+  menu?: InputMaybe<StringFilter>;
 };
 
 export type MenuConnectionEdges = {
@@ -271,16 +273,17 @@ export type MenuMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
   price?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
+  menu?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type MenuPartsFragment = { __typename?: 'Menu', title: string, body?: any | null, price?: string | null, type?: string | null };
+export type MenuPartsFragment = { __typename?: 'Menu', title: string, body?: any | null, price?: string | null, type?: string | null, menu?: string | null };
 
 export type MenuQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type MenuQuery = { __typename?: 'Query', menu: { __typename?: 'Menu', id: string, title: string, body?: any | null, price?: string | null, type?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type MenuQuery = { __typename?: 'Query', menu: { __typename?: 'Menu', id: string, title: string, body?: any | null, price?: string | null, type?: string | null, menu?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type MenuConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -292,7 +295,7 @@ export type MenuConnectionQueryVariables = Exact<{
 }>;
 
 
-export type MenuConnectionQuery = { __typename?: 'Query', menuConnection: { __typename?: 'MenuConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MenuConnectionEdges', cursor: string, node?: { __typename?: 'Menu', id: string, title: string, body?: any | null, price?: string | null, type?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type MenuConnectionQuery = { __typename?: 'Query', menuConnection: { __typename?: 'MenuConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MenuConnectionEdges', cursor: string, node?: { __typename?: 'Menu', id: string, title: string, body?: any | null, price?: string | null, type?: string | null, menu?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const MenuPartsFragmentDoc = gql`
     fragment MenuParts on Menu {
@@ -300,6 +303,7 @@ export const MenuPartsFragmentDoc = gql`
   body
   price
   type
+  menu
 }
     `;
 export const MenuDocument = gql`
