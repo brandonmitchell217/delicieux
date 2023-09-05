@@ -4,6 +4,8 @@ price: '18'
 body: |
   Arugula & stuff
 type: Appetizer
+menu: dinner
 ---
+
 
 

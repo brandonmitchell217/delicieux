@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Tabs from "./Tabs";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
   data?: any | undefined;
@@ -8,6 +9,28 @@ interface Props {
 // test
 
 export default function Section({ data }: Props) {
+  const [activeTab, setActiveTab] = useState(0);
+  const tabs = ["Dinner", "Brunch", "Four Course"];
+
+  const Tabs = () => {
+    return (
+      <div className="flex justify-between items-center max-w-[605px] m-auto">
+        {tabs.map((tab, index) => (
+          <div
+            key={index}
+            className={twMerge(
+              "text-xl font-semibold cursor-pointer",
+              activeTab === index && "underline"
+            )}
+            onClick={() => setActiveTab(index)}
+          >
+            <span>{tab}</span>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   function description(item: any) {
     let body = item.slug.body.children[0].children[0].text;
     return body;
@@ -19,6 +42,23 @@ export default function Section({ data }: Props) {
   //   console.log(
   //     data.map((item: any) => item.slug.body.children[0].children[0].text)
   //   );
+
+  // const MenuType = (menu: string, type: string) => {
+  //   if (menu === 'dinner') {
+  //     return (
+  //       <div className="max-w-6xl m-auto space-y-12">
+  //         <h2 className="text-5xl font-bold"></h2>
+  //       <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full px-8 lg:place-items-center">
+  //         {data
+  //           .filter((item: any) => item.slug.type.toLowerCase() === "appetizer")
+  //           .map((item: any, index: number) => (
+  //             <Card item={item} key={index} />
+  //           ))}
+  //       </div>
+  //     </div>
+  //     )
+  //   }
+  // }
 
   const Card = ({ item, index }: any) => {
     return (
@@ -43,6 +83,7 @@ export default function Section({ data }: Props) {
 
   return (
     <div className="space-y-20">
+      <Tabs />
       <div className="max-w-6xl m-auto space-y-12">
         <h2 className="text-5xl font-bold">Appetizers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full px-8 lg:place-items-center">

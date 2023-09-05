@@ -4,7 +4,9 @@ price: '53'
 body: |
   sea bass, shrimp and green tomato vinaigrette
 type: Entree
+menu: dinner
 ---
+
 
 
 

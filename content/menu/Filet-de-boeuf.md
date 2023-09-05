@@ -4,5 +4,7 @@ body: |
   beef filet, bone marrow jus, oxtail potato
 price: '78'
 type: Entree
+menu: dinner
 ---
+
 

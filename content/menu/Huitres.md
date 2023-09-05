@@ -4,5 +4,7 @@ body: |
   oysters, seaweed granité
 price: '28'
 type: Appetizer
+menu: dinner
 ---
+
 

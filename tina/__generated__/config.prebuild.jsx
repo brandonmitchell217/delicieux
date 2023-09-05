@@ -44,6 +44,12 @@ var config_default = defineConfig({
             type: "string",
             name: "type",
             label: "Type"
+          },
+          {
+            type: "string",
+            name: "menu",
+            label: "Menu Type",
+            options: ["dinner", "brunch"]
           }
         ]
       }
