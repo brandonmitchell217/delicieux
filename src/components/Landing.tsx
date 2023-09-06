@@ -9,11 +9,19 @@ export const Landing = () => {
   return (
     <div className="relative bg-landingMobile sm:bg-landing md:bg-contain bg-top bg-no-repeat w-full h-[90vh] md:h-auto md:aspect-video flex text-light">
       <div className="relative w-full h-full flex flex-col md:flex-row items-center md:items-end justify-end md:justify-between gap-6 md:gap-0 pb-[5%] lg:pb-[8%] xl:pb-[5%] px-4 sm:px-20">
-        <div className="absolute bottom-44 right-24 hidden lg:flex gap-6">
-          <img src="/goodyear.png" alt="Goodyear Award badge" />
-          <img src="/goodyear.png" alt="Goodyear Award badge" />
+        <div className="absolute top-32 right-[8%] -translate-x-[8%] lg:top-auto lg:bottom-44 flex gap-3 lg:gap-6">
+          <img
+            src="/goodyear.png"
+            alt="Goodyear Award badge"
+            className="block w-16 h-auto lg:w-24 lg:h-max"
+          />
+          <img
+            src="/goodyear.png"
+            alt="Goodyear Award badge"
+            className="block w-16 h-auto lg:w-24 lg:h-max"
+          />
         </div>
-        <h1 className="text-[48px] lg:text-[56px] xl:text-[66px] leading-[.877em] font-bold font-crimson">
+        <h1 className="text-[48px] lg:text-[56px] xl:text-[66px] leading-[.877em] font-bold font-crimson landing-text">
           Fine Wine & an
           <br />
           Authentic French
@@ -21,11 +29,9 @@ export const Landing = () => {
           Experience
         </h1>
         <div className="font-bold text-[18px] tracking-[.045em] leading-[.877em] hidden lg:flex justify-end items-end">
-          <div className="flex flex-col gap-4 w-full">
-            <a href="/" className={twMerge(LinkStyles)}>
-              Make a Reservation
-            </a>
-            <a href="/" className={twMerge(LinkStyles)}>
+          <div className="flex flex-col gap-4 w-full landing-text">
+            <a className={twMerge(LinkStyles)}>Make a Reservation</a>
+            <a href="/#contact" className={twMerge(LinkStyles)}>
               Contact Us
             </a>
           </div>

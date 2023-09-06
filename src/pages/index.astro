@@ -20,7 +20,7 @@ function determineSide(index: number) {
 
 const Prop: PropProps = {
 	title: 'Qualité',
-	description: "Lorem ipsum dolor sit amet consectetur. Nisl diam pellentesque proin id lectus fermentum. Quisque amet blandit senectus arcu faucibus ut. Massa rhoncus dui aliquam sed. Vitae porttitor aliquet turpis id quam dolor hac massa mi. Malesuada netus vitae lobortis in blandit. Nibh elementum tellus nec aenean senectus leo massa.",
+	description: "At Delicieux, every dish is a masterpiece meticulously crafted with the finest ingredients sourced from across France. Chef Jared Steen's unyielding dedication to perfection is evident in every exquisite creation that graces the plate, where each bite is an enchanting journey of flavor and texture. The pursuit of culinary excellence is woven into the very fabric of Delicieux, inviting diners to savor the essence of France through a symphony of flavors that transcend the ordinary and leave an indelible mark on the senses.",
 	link: {label: "Check out our menu", url: '/menu'},
 	images: ['/quality.png', '/quality2.png']
 }
@@ -83,7 +83,7 @@ const Staff: StaffProps[] = [
 			<ChefsTable />
 		</section>
 		<InterstitialImg label="Restaurant" src="/interstitial.jpg" />
-		<section class="pb-16">
+		<section id="about" class="pb-16">
 			{Staff.map((person) => {
 				return (
 					<Row side={determineSide(person.id)}>
