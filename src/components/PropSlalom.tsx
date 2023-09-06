@@ -41,7 +41,7 @@ export const PropSlalom = ({ prop, side = "left" }: Props) => {
             <div className="absolute -z-10 h-2.5 w-[72%] bottom-0 right-2 bg-red rounded-full"></div>
           </h2>
           <div className="lg:w-[80%] space-y-4 md:pl-8 md:pr-4 lg:pl-14 lg:pr-0">
-            <p className="pt-8 text-[16px] xl:text-[24px] leading-[1.5em] tracking-[.02em] ">
+            <p className="pt-8 text-[16px] xl:text-[22px] leading-[1.5em] tracking-[.02em] ">
               {prop.description}
             </p>
             <a
