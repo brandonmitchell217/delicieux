@@ -5,8 +5,6 @@ interface Props {
   data?: any | undefined;
 }
 
-// test
-
 export default function Section({ data }: Props) {
   const tabs: string[] = ["Dinner", "Brunch", "Four Course"];
   const [activeTab, setActiveTab] = useState<string>(tabs[0]);
