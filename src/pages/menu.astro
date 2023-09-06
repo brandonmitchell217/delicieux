@@ -11,9 +11,6 @@ const items = menuResponse.data.menuConnection.edges?.map((item) => {
 	return { slug: item?.node }
 }) as any
 
-// const bodyText = items?.map((item) => item.slug?.body.children[0].children[0].text)
-
-// console.log(items);
 
 const currentPath = Astro.url.pathname
 ---
@@ -22,7 +19,6 @@ const currentPath = Astro.url.pathname
    <Banner />
    <Nav pathname={currentPath} />
    <main class="py-32 space-y-16">
-      <!-- <Tabs client:load /> -->
       <Section data={items} client:load />
    </main>
    <Footer />
