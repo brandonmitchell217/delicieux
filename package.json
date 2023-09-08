@@ -24,7 +24,6 @@
     "tinacms": "^1.5.20"
   },
   "devDependencies": {
-    "@svgr/webpack": "^8.1.0",
     "@types/react": "^18.2.20",
     "tailwindcss-animate": "^1.0.6"
   }
