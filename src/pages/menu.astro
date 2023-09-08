@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Nav } from "../components/Nav";
 import { Section } from "../components/Menu";
 import client from "../../tina/__generated__/client";
 import Banner from "../components/Banner";
 import { Footer } from "../components/Footer";
+import { NavDark } from "../components/NavDark";
 
 const menuResponse = await client.queries.menuConnection()
 const items = menuResponse.data.menuConnection.edges?.map((item) => {
@@ -17,7 +17,7 @@ const currentPath = Astro.url.pathname
 
 <Layout title="Menus - Delicieux">
    <Banner />
-   <Nav pathname={currentPath} client:load />
+   <NavDark />
    <main class="py-32 space-y-16">
       <Section data={items} client:load />
    </main>
