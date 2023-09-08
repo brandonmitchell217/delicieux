@@ -32,15 +32,28 @@ export const Nav = () => {
         <div className="w-full flex flex-col md:flex-row gap-16 md:gap-0 justify-between items-center px-[9vw]">
           <ul className="space-y-14 text-center md:text-left text-2xl sm:text-3xl lg:text-5xl font-semibold">
             <li>
-              <a href="/#about" className="">
+              <a
+                href="/#about"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
                 About
               </a>
             </li>
             <li>
-              <a href="/menu">Menu</a>
+              <a
+                href="/menu"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                Menu
+              </a>
             </li>
             <li>
-              <a href="/#contact">Contact</a>
+              <a
+                href="/#contact"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                Contact
+              </a>
             </li>
           </ul>
           <div className="space-y-3">
