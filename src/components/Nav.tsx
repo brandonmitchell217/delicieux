@@ -1,5 +1,4 @@
-"use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import LogoDark from "/logo_dark.svg";
 import LogoNav from "/logo_nav.svg";
 
@@ -8,12 +7,21 @@ interface Props {
 }
 
 export const Nav = ({ pathname }: Props) => {
-  console.log(pathname);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    if (pathname === "/menu") {
+      setIsDark(true);
+    } else {
+      setIsDark(false);
+    }
+  }, [pathname]);
+
   return (
     <nav className="absolute z-50 top-0 left-0 right-0 py-8">
       <div className="max-w-[1280px] m-auto flex justify-center items-center">
         <a href="/" className="group">
-          {pathname === "/menu" ? (
+          {isDark ? (
             <img
               src={LogoDark}
               alt="Logo"

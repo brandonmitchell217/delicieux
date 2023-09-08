@@ -17,7 +17,7 @@ const currentPath = Astro.url.pathname
 
 <Layout title="Menus - Delicieux">
    <Banner />
-   <Nav pathname={currentPath} />
+   <Nav pathname={currentPath} client:load />
    <main class="py-32 space-y-16">
       <Section data={items} client:load />
    </main>
