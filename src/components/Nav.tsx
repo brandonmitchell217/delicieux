@@ -1,4 +1,6 @@
 import React from "react";
+import LogoDark from "/logo_dark.svg";
+import LogoNav from "/logo_nav.svg";
 
 interface Props {
   pathname?: string;
@@ -11,13 +13,13 @@ export const Nav = ({ pathname }: Props) => {
         <a href="/" className="group">
           {pathname === "/menu" ? (
             <img
-              src="/logo_dark.svg"
+              src={LogoDark}
               alt="Logo"
               className="lg:group-hover:scale-105 transition-all"
             />
           ) : (
             <img
-              src="/logo_nav.svg"
+              src={LogoNav}
               alt="Logo"
               className="lg:group-hover:scale-105 transition-all"
             />
