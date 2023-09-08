@@ -10,14 +10,11 @@ const menuResponse = await client.queries.menuConnection()
 const items = menuResponse.data.menuConnection.edges?.map((item) => {
 	return { slug: item?.node }
 }) as any
-
-
-const currentPath = Astro.url.pathname
 ---
 
 <Layout title="Menus - Delicieux">
    <Banner />
-   <NavDark />
+   <NavDark client:load />
    <main class="py-32 space-y-16">
       <Section data={items} client:load />
    </main>
