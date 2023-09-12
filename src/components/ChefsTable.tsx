@@ -23,7 +23,7 @@ export const ChefsTable = () => {
             <p className="text-[13px] md:text-[16px] xl:text-[18px] leading-[1.227em]">
               Chef&apos;s Table is priced starting at $189 per person.
               <br />
-              <a href="/" className="underline">
+              <a href="/contact" className="underline">
                 Contact us
               </a>
               {""} directly to create your unique experience.
