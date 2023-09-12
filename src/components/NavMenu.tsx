@@ -78,10 +78,7 @@ export default function NavMenu({
             </p>
           </div>
           <div className="flex justify-center">
-            <a
-              href="/"
-              className="border-b border-b-red hover:text-light/70 hover:border-b-2 transition-all"
-            >
+            <a className="border-b border-b-red hover:text-light/70 hover:border-b-2 transition-all">
               Make a Reservation
             </a>
           </div>
@@ -90,17 +87,17 @@ export default function NavMenu({
       <div>
         <ul className="flex gap-24 items-center">
           <li>
-            <a href="/" className="hover:text-light/70 transition-all">
+            <a className="hover:text-light/70 transition-all">
               <Facebook size={32} />
             </a>
           </li>
           <li>
-            <a href="/" className="hover:text-light/70 transition-all">
+            <a className="hover:text-light/70 transition-all">
               <Instagram size={32} />
             </a>
           </li>
           <li>
-            <a href="/" className="hover:text-light/70 transition-all">
+            <a className="hover:text-light/70 transition-all">
               <Twitter size={32} />
             </a>
           </li>
