@@ -96,10 +96,7 @@ export const Footer = () => {
                 Tuesday - Saturday
               </p>
             </div>
-            <a
-              href="/"
-              className="inline-block pt-6 md:pt-0 font-semibold text-[28px] lg:text-[20px] border-b-2 border-b-red hover:border-dark hover:text-light/80 transition-colors"
-            >
+            <a className="inline-block pt-6 md:pt-0 font-semibold text-[28px] lg:text-[20px] border-b-2 border-b-red hover:border-dark hover:text-light/80 transition-colors">
               Reservations
             </a>
           </div>
@@ -120,7 +117,13 @@ export const Footer = () => {
           <div>
             <p>
               Design & code by{" "}
-              <a className="hover:text-[#c2f73b] transition-colors">Brandon</a>
+              <a
+                href="https://www.brandon-mitchell.dev/"
+                target="_blank"
+                className="hover:text-[#c2f73b] transition-colors"
+              >
+                Brandon
+              </a>
             </p>
           </div>
         </div>
