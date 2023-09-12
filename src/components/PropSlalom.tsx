@@ -29,7 +29,7 @@ export const PropSlalom = ({ prop, side = "left" }: Props) => {
   let imageSrc = prop.images[imageIndex];
 
   return (
-    <div className="pt-32 pb-20 px-4 md:px-12 xl:px-4">
+    <div className="pt-24 sm:pt-32 pb-20 px-4 md:px-12 xl:px-4">
       <div
         className={`w-full flex flex-col-reverse md:flex-row gap-12 md:gap-8 lg:gap-0 justify-center md:justify-between items-center ${
           side === "left" ? null : twMerge("flex-row-reverse")
@@ -70,7 +70,7 @@ export const PropSlalom = ({ prop, side = "left" }: Props) => {
             src={imageSrc}
             alt={`${prop.title} image`}
             loading="lazy"
-            className="shadow-sm max-w-[355px] w-[40vw] md:w-[30vw] h-auto"
+            className="shadow-sm max-w-[355px] w-[80vw] sm:w-[40vw] md:w-[30vw] h-auto"
           />
           <div className="absolute -z-10 -right-4 -top-3 h-full w-full border-2 border-dark rounded-2xl"></div>
         </div>
