@@ -3,4 +3,4 @@
 export const CurrentUrl =
   process.env.ENVIRONMENT === "development"
     ? "http://127.0.0.1:3000"
-    : process.env.VERCEL_URL;
+    : process.env.URL_PROD;

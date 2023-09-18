@@ -24,7 +24,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setImageIndex((prevIndex) => (prevIndex + 1) % imgArr.length);
-    }, 1000);
+    }, 6000);
 
     console.log(prop[0]);
 
