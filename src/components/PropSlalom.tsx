@@ -15,6 +15,8 @@ interface SlalomProps {
   side?: "left" | "right";
 }
 
+// TODO: Figure out why image doesn't change on interval
+
 export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
   const imgArr = [prop[0].image, prop[0].image_secondary];
   const [imageIndex, setImageIndex] = useState(0);
@@ -22,7 +24,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setImageIndex((prevIndex) => (prevIndex + 1) % imgArr.length);
-    }, 6000);
+    }, 1000);
 
     console.log(prop[0]);
 
