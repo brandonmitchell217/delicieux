@@ -74,7 +74,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
         </div>
         <div className="relative">
           <img
-            src={CurrentUrl + imageSrc}
+            src={imageSrc}
             alt={`${prop[0].title} image`}
             loading="lazy"
             className="shadow-sm max-w-[355px] w-[80vw] sm:w-[40vw] md:w-[30vw] h-auto"
