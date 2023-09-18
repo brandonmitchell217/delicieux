@@ -33,7 +33,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
     };
   }, [imgArr.length]);
 
-  let imageSrc = imgArr[imageIndex];
+  const imageSrc = imgArr[imageIndex] || "";
 
   return (
     <div className="pt-24 sm:pt-32 pb-20 px-4 md:px-12 xl:px-4">
