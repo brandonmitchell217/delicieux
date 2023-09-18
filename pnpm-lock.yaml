@@ -16,10 +16,10 @@ dependencies:
     version: 1.1.1
   '@tinacms/cli':
     specifier: ^1.5.29
-    version: 1.5.29(@babel/core@7.22.10)(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
+    version: 1.5.29(@babel/core@7.22.10)(@types/node@20.6.2)(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
   astro:
     specifier: ^2.10.9
-    version: 2.10.9
+    version: 2.10.9(@types/node@20.6.2)
   lucide-react:
     specifier: ^0.268.0
     version: 0.268.0(react@18.2.0)
@@ -34,6 +34,9 @@ dependencies:
     version: 1.5.20(@babel/core@7.22.10)(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
+  '@types/node':
+    specifier: ^20.6.2
+    version: 20.6.2
   '@types/react':
     specifier: ^18.2.20
     version: 18.2.20
@@ -127,7 +130,7 @@ packages:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.10.9
+      astro: 2.10.9(@types/node@20.6.2)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -176,7 +179,7 @@ packages:
       astro: ^2.6.5
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 2.10.9
+      astro: 2.10.9(@types/node@20.6.2)
       autoprefixer: 10.4.15(postcss@8.4.28)
       postcss: 8.4.28
       postcss-load-config: 4.0.1(postcss@8.4.28)
@@ -1371,14 +1374,14 @@ packages:
       tslib: 2.6.1
     dev: false
 
-  /@graphiql/react@0.18.0(@codemirror/language@6.0.0)(@types/react-dom@18.2.7)(@types/react@18.2.20)(graphql@15.8.0)(react-dom@17.0.2)(react@17.0.2):
+  /@graphiql/react@0.18.0(@codemirror/language@6.0.0)(@types/node@20.6.2)(@types/react-dom@18.2.7)(@types/react@18.2.20)(graphql@15.8.0)(react-dom@17.0.2)(react@17.0.2):
     resolution: {integrity: sha512-OIzUjnxBM4k9DY0DXBMRfU+fTak2tbnmY2o6J5t/vKvqGaa4opRUhgIZEvrerjnktjCxj2dJY706gCwnUZQsNg==}
     peerDependencies:
       graphql: ^15.5.0 || ^16.0.0
       react: ^16.8.0 || ^17 || ^18
       react-dom: ^16.8.0 || ^17 || ^18
     dependencies:
-      '@graphiql/toolkit': 0.8.4(graphql@15.8.0)
+      '@graphiql/toolkit': 0.8.4(@types/node@20.6.2)(graphql@15.8.0)
       '@headlessui/react': 1.7.17(react-dom@17.0.2)(react@17.0.2)
       '@radix-ui/react-dialog': 1.0.4(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@17.0.2)(react@17.0.2)
       '@radix-ui/react-dropdown-menu': 2.0.5(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@17.0.2)(react@17.0.2)
@@ -1404,7 +1407,7 @@ packages:
       - graphql-ws
     dev: false
 
-  /@graphiql/toolkit@0.8.4(graphql@15.8.0):
+  /@graphiql/toolkit@0.8.4(@types/node@20.6.2)(graphql@15.8.0):
     resolution: {integrity: sha512-cFUGqh3Dau+SD3Vq9EFlZrhzYfaHKyOJveFtaCR+U5Cn/S68p7oy+vQBIdwtO6J2J58FncnwBbVRfr+IvVfZqQ==}
     peerDependencies:
       graphql: ^15.5.0 || ^16.0.0
@@ -1415,7 +1418,7 @@ packages:
     dependencies:
       '@n1ru4l/push-pull-async-iterable-iterator': 3.2.0
       graphql: 15.8.0
-      meros: 1.3.0
+      meros: 1.3.0(@types/node@20.6.2)
     transitivePeerDependencies:
       - '@types/node'
     dev: false
@@ -3466,18 +3469,18 @@ packages:
       tailwindcss: 3.3.3
     dev: false
 
-  /@tinacms/app@1.2.27(@babel/core@7.22.10)(@types/react-dom@18.2.7)(@types/react@18.2.20)(yup@0.32.11):
+  /@tinacms/app@1.2.27(@babel/core@7.22.10)(@types/node@20.6.2)(@types/react-dom@18.2.7)(@types/react@18.2.20)(yup@0.32.11):
     resolution: {integrity: sha512-wH9kI2xT155i19klrLZoznCl8SI8upirdq8NhnGkqLbOcDTz66Dbt2VXfX3Vb3ugibqx1WFixGCoaHsTzMYGCA==}
     dependencies:
       '@codemirror/language': 6.0.0
-      '@graphiql/toolkit': 0.8.4(graphql@15.8.0)
+      '@graphiql/toolkit': 0.8.4(@types/node@20.6.2)(graphql@15.8.0)
       '@headlessui/react': 1.6.6(react-dom@17.0.2)(react@17.0.2)
       '@heroicons/react': 1.0.6(react@17.0.2)
       '@monaco-editor/react': 4.4.5(monaco-editor@0.31.0)(react-dom@17.0.2)(react@17.0.2)
       '@tinacms/mdx': 1.3.18(react@17.0.2)(yup@0.32.11)
       '@xstate/react': 3.0.0(@types/react@18.2.20)(react@17.0.2)
       final-form: 4.20.7
-      graphiql: 3.0.0-alpha.1(@codemirror/language@6.0.0)(@types/react-dom@18.2.7)(@types/react@18.2.20)(graphql@15.8.0)(react-dom@17.0.2)(react@17.0.2)
+      graphiql: 3.0.0-alpha.1(@codemirror/language@6.0.0)(@types/node@20.6.2)(@types/react-dom@18.2.7)(@types/react@18.2.20)(graphql@15.8.0)(react-dom@17.0.2)(react@17.0.2)
       graphql: 15.8.0
       monaco-editor: 0.31.0
       postcss: 8.4.28
@@ -3512,7 +3515,7 @@ packages:
       - yup
     dev: false
 
-  /@tinacms/cli@1.5.29(@babel/core@7.22.10)(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
+  /@tinacms/cli@1.5.29(@babel/core@7.22.10)(@types/node@20.6.2)(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-exwIolmmARn0xKjdC3qB6ObzdAlCua02UqMSmhJMblZM8idPQXs8yewigKky879eYzY18g+etkdGYBgkud4vjw==}
     hasBin: true
     dependencies:
@@ -3530,7 +3533,7 @@ packages:
       '@tailwindcss/aspect-ratio': 0.4.2(tailwindcss@3.3.3)
       '@tailwindcss/line-clamp': 0.3.1(tailwindcss@3.3.3)
       '@tailwindcss/typography': 0.5.9(tailwindcss@3.3.3)
-      '@tinacms/app': 1.2.27(@babel/core@7.22.10)(@types/react-dom@18.2.7)(@types/react@18.2.20)(yup@0.32.11)
+      '@tinacms/app': 1.2.27(@babel/core@7.22.10)(@types/node@20.6.2)(@types/react-dom@18.2.7)(@types/react@18.2.20)(yup@0.32.11)
       '@tinacms/datalayer': 1.2.25(react@18.2.0)
       '@tinacms/graphql': 1.4.25(react@18.2.0)
       '@tinacms/metrics': 1.0.2(fs-extra@9.1.0)
@@ -3577,7 +3580,7 @@ packages:
       tinacms: 1.5.20(@babel/core@7.22.10)(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
       typanion: 3.13.0
       url-pattern: 1.0.3
-      vite: 4.4.9
+      vite: 4.4.9(@types/node@20.6.2)
       yarn: 1.22.19
       yup: 0.32.11
       zod: 3.22.1
@@ -3977,6 +3980,9 @@ packages:
     dependencies:
       '@types/unist': 2.0.7
     dev: false
+
+  /@types/node@20.6.2:
+    resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==}
 
   /@types/parse-json@4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -7121,7 +7127,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.10)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.4.9
+      vite: 4.4.9(@types/node@20.6.2)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -7360,7 +7366,7 @@ packages:
     resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
     dev: false
 
-  /astro@2.10.9:
+  /astro@2.10.9(@types/node@20.6.2):
     resolution: {integrity: sha512-rtm/RHeJdAIAsziQaAGvbv2ALylNNOF1SUQ0zJaugu/ABUU62tNGNSxIR0LO5l4+dHhLbzRNo5uEnIPkmSRw+w==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
@@ -7422,7 +7428,7 @@ packages:
       typescript: 5.1.6
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 4.4.9
+      vite: 4.4.9(@types/node@20.6.2)
       vitefu: 0.2.4(vite@4.4.9)
       which-pm: 2.0.0
       yargs-parser: 21.1.1
@@ -8984,15 +8990,15 @@ packages:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
     dev: false
 
-  /graphiql@3.0.0-alpha.1(@codemirror/language@6.0.0)(@types/react-dom@18.2.7)(@types/react@18.2.20)(graphql@15.8.0)(react-dom@17.0.2)(react@17.0.2):
+  /graphiql@3.0.0-alpha.1(@codemirror/language@6.0.0)(@types/node@20.6.2)(@types/react-dom@18.2.7)(@types/react@18.2.20)(graphql@15.8.0)(react-dom@17.0.2)(react@17.0.2):
     resolution: {integrity: sha512-YAL7wQtbC/RkFkjS3SNGzAhwcpYLGC+rZmFu11+/Aa3aXW4Nvi4PIjAIsN4SheEXTyT20QNdFu6B63/3IWmCnA==}
     peerDependencies:
       graphql: ^15.5.0 || ^16.0.0
       react: ^16.8.0 || ^17 || ^18
       react-dom: ^16.8.0 || ^17 || ^18
     dependencies:
-      '@graphiql/react': 0.18.0(@codemirror/language@6.0.0)(@types/react-dom@18.2.7)(@types/react@18.2.20)(graphql@15.8.0)(react-dom@17.0.2)(react@17.0.2)
-      '@graphiql/toolkit': 0.8.4(graphql@15.8.0)
+      '@graphiql/react': 0.18.0(@codemirror/language@6.0.0)(@types/node@20.6.2)(@types/react-dom@18.2.7)(@types/react@18.2.20)(graphql@15.8.0)(react-dom@17.0.2)(react@17.0.2)
+      '@graphiql/toolkit': 0.8.4(@types/node@20.6.2)(graphql@15.8.0)
       graphql: 15.8.0
       graphql-language-service: 5.1.7(graphql@15.8.0)
       markdown-it: 12.3.2
@@ -10229,7 +10235,7 @@ packages:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
 
-  /meros@1.3.0:
+  /meros@1.3.0(@types/node@20.6.2):
     resolution: {integrity: sha512-2BNGOimxEz5hmjUG2FwoxCt5HN7BXdaWyFqEwxPTrJzVdABtrL4TiHTcsWSFAxPQ/tOnEaQEJh3qWq71QRMY+w==}
     engines: {node: '>=13'}
     peerDependencies:
@@ -10237,6 +10243,8 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
+    dependencies:
+      '@types/node': 20.6.2
     dev: false
 
   /methods@1.1.2:
@@ -13669,7 +13677,7 @@ packages:
       vfile-message: 3.1.4
     dev: false
 
-  /vite@4.4.9:
+  /vite@4.4.9(@types/node@20.6.2):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -13697,6 +13705,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.6.2
       esbuild: 0.18.20
       postcss: 8.4.28
       rollup: 3.28.0
@@ -13712,7 +13721,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.9
+      vite: 4.4.9(@types/node@20.6.2)
     dev: false
 
   /vscode-css-languageservice@6.2.6:

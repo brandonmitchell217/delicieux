@@ -2,13 +2,31 @@
 import Layout from '../layouts/Layout.astro';
 import { Landing } from "../components/Landing";
 import { Nav } from "../components/Nav";
-import {PropSlalom, PropProps} from '../components/PropSlalom'
+import {PropSlalom } from '../components/PropSlalom'
 import { ChefsTable } from "../components/ChefsTable";
 import { InterstitialImg } from "../components/InterstitialImg";
 import { Row } from "../components/Row";
 import { StaffInfo, StaffProps } from "../components/StaffInfo";
 import { Footer } from "../components/Footer";
 import Banner from "../components/Banner";
+import client from "../../tina/__generated__/client";
+
+const propResponse = await client.queries.propsConnection()
+const data = propResponse.data.propsConnection.edges?.map((item) => {
+	return { slug: item?.node }
+}) as any
+
+const PropData = data.map((item: any) => {
+	return {
+		title: item.slug.title,
+		body: item.slug.body.children[0].children[0].text,
+		link_url: item.slug.link_url,
+		link_text: item.slug.link_text,
+		image: item.slug.image,
+		image_secondary: item.slug.image_secondary,
+		image_alt: item.slug.image_alt,
+	}
+})
 
 
 
@@ -17,13 +35,6 @@ function determineSide(index: number) {
 }
 
 
-
-const Prop: PropProps = {
-	title: 'Qualité',
-	description: "At Delicieux, every dish is a masterpiece meticulously crafted with the finest ingredients sourced from across France. Chef Jared Steen's unyielding dedication to perfection is evident in every exquisite creation that graces the plate, where each bite is an enchanting journey of flavor and texture. The pursuit of culinary excellence is woven into the very fabric of Delicieux, inviting diners to savor the essence of France through a symphony of flavors that transcend the ordinary and leave an indelible mark on the senses.",
-	link: {label: "Check out our menu", url: '/menu'},
-	images: ['/quality.png', '/quality2.png']
-}
 
 
 const Staff: StaffProps[] = [
@@ -77,7 +88,7 @@ const Staff: StaffProps[] = [
 			<img src="/fancyLines1.png" alt="fancy lines" class="w-[90%] md:max-w-[550px] h-auto m-auto">
 		</section>
 		<section>
-			<PropSlalom prop={Prop} client:load />
+			<PropSlalom prop={PropData} client:load />
 		</section>
 		<section>
 			<ChefsTable />

@@ -5,3 +5,14 @@ fragment MenuParts on Menu {
   type
   menu
 }
+
+fragment PropsParts on Props {
+  title
+  body
+  link_text
+  link_url
+  image
+  image_secondary
+  image_alt
+  image_bg
+}

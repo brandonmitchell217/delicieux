@@ -1,32 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
+import type { Props } from "../../tina/__generated__/types";
+import { CurrentUrl } from "../lib/util";
 
-export type PropProps = {
-  title: string;
-  description: string;
-  link: { label: string; url: string };
-  images: string[];
-};
+// export type PropProps = {
+//   title: string;
+//   description: string;
+//   link: { label: string; url: string };
+//   images: string[];
+// };
 
-interface Props {
-  prop: PropProps;
+interface SlalomProps {
+  prop: Props[];
   side?: "left" | "right";
 }
 
-export const PropSlalom = ({ prop, side = "left" }: Props) => {
+export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
+  const imgArr = [prop[0].image, prop[0].image_secondary];
   const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setImageIndex((prevIndex) => (prevIndex + 1) % prop.images.length);
+      setImageIndex((prevIndex) => (prevIndex + 1) % imgArr.length);
     }, 6000);
+
+    console.log(prop[0]);
 
     return () => {
       clearInterval(interval);
     };
-  }, [prop.images.length]);
+  }, [imgArr.length]);
 
-  let imageSrc = prop.images[imageIndex];
+  let imageSrc = imgArr[imageIndex];
 
   return (
     <div className="pt-24 sm:pt-32 pb-20 px-4 md:px-12 xl:px-4">
@@ -37,18 +42,18 @@ export const PropSlalom = ({ prop, side = "left" }: Props) => {
       >
         <div className=" flex flex-col">
           <h2 className="relative font-crimson font-bold text-[88px] xl:text-[144px] leading-[.877em] w-max">
-            {prop.title}
+            {prop[0].title}
             <div className="absolute -z-10 h-2.5 w-[72%] bottom-0 right-2 bg-red rounded-full"></div>
           </h2>
           <div className="lg:w-[80%] space-y-4 md:pl-8 md:pr-4 lg:pl-14 lg:pr-0">
             <p className="pt-8 text-[16px] xl:text-[22px] leading-[1.5em] tracking-[.02em] ">
-              {prop.description}
+              {prop[0].body}
             </p>
             <a
-              href={prop.link.url}
+              href={prop[0].link_url as string}
               className="md:ml-4 font-crimson text-[20px] lg:text-[28px] tracking-[.02em] flex items-center gap-4 md:gap-8 group"
             >
-              {prop.link.label}
+              {prop[0].link_text}
               <svg
                 width="141"
                 height="24"
@@ -67,8 +72,8 @@ export const PropSlalom = ({ prop, side = "left" }: Props) => {
         </div>
         <div className="relative">
           <img
-            src={imageSrc}
-            alt={`${prop.title} image`}
+            src={CurrentUrl + imageSrc}
+            alt={`${prop[0].title} image`}
             loading="lazy"
             className="shadow-sm max-w-[355px] w-[80vw] sm:w-[40vw] md:w-[30vw] h-auto"
           />

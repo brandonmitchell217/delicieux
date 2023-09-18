@@ -55,10 +55,13 @@ type Query {
   document(collection: String, relativePath: String): DocumentNode!
   menu(relativePath: String): Menu!
   menuConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: MenuFilter): MenuConnection!
+  props(relativePath: String): Props!
+  propsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PropsFilter): PropsConnection!
 }
 
 input DocumentFilter {
   menu: MenuFilter
+  props: PropsFilter
 }
 
 type DocumentConnectionEdges {
@@ -84,7 +87,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Menu | Folder
+union DocumentNode = Menu | Props | Folder
 
 type Menu implements Node & Document {
   title: String!
@@ -129,6 +132,47 @@ type MenuConnection implements Connection {
   edges: [MenuConnectionEdges]
 }
 
+type Props implements Node & Document {
+  title: String!
+  body: JSON
+  link_text: String
+  link_url: String
+  image: String
+  image_secondary: String
+  image_alt: String
+  image_bg: Boolean
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
+input PropsFilter {
+  title: StringFilter
+  body: RichTextFilter
+  link_text: StringFilter
+  link_url: StringFilter
+  image: StringFilter
+  image_secondary: StringFilter
+  image_alt: StringFilter
+  image_bg: BooleanFilter
+}
+
+type PropsConnectionEdges {
+  cursor: String!
+  node: Props
+}
+
+type PropsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PropsConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -136,15 +180,19 @@ type Mutation {
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   updateMenu(relativePath: String!, params: MenuMutation!): Menu!
   createMenu(relativePath: String!, params: MenuMutation!): Menu!
+  updateProps(relativePath: String!, params: PropsMutation!): Props!
+  createProps(relativePath: String!, params: PropsMutation!): Props!
 }
 
 input DocumentUpdateMutation {
   menu: MenuMutation
+  props: PropsMutation
   relativePath: String
 }
 
 input DocumentMutation {
   menu: MenuMutation
+  props: PropsMutation
 }
 
 input MenuMutation {
@@ -153,6 +201,17 @@ input MenuMutation {
   price: String
   type: String
   menu: String
+}
+
+input PropsMutation {
+  title: String
+  body: JSON
+  link_text: String
+  link_url: String
+  image: String
+  image_secondary: String
+  image_alt: String
+  image_bg: Boolean
 }
 
 schema {
