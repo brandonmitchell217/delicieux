@@ -50,3 +50,56 @@ query menuConnection($before: String, $after: String, $first: Float, $last: Floa
     }
   }
 }
+
+query props($relativePath: String!) {
+  props(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PropsParts
+  }
+}
+
+query propsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PropsFilter) {
+  propsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PropsParts
+      }
+    }
+  }
+}

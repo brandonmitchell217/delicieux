@@ -52,6 +52,54 @@ var config_default = defineConfig({
             options: ["dinner", "brunch", "four course"]
           }
         ]
+      },
+      {
+        name: "props",
+        label: "Props",
+        path: "content/props",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            required: true
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Prop Body"
+          },
+          {
+            type: "string",
+            name: "link_text",
+            label: "Link Text"
+          },
+          {
+            type: "string",
+            name: "link_url",
+            label: "Link Url"
+          },
+          {
+            type: "string",
+            name: "image",
+            label: "Image"
+          },
+          {
+            type: "string",
+            name: "image_secondary",
+            label: "Secondary Image"
+          },
+          {
+            type: "string",
+            name: "image_alt",
+            label: "Image Alt Text"
+          },
+          {
+            type: "boolean",
+            name: "image_bg",
+            label: "Image Background"
+          }
+        ]
       }
     ]
   }

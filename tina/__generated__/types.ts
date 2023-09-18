@@ -83,6 +83,8 @@ export type Query = {
   document: DocumentNode;
   menu: Menu;
   menuConnection: MenuConnection;
+  props: Props;
+  propsConnection: PropsConnection;
 };
 
 
@@ -121,8 +123,24 @@ export type QueryMenuConnectionArgs = {
   filter?: InputMaybe<MenuFilter>;
 };
 
+
+export type QueryPropsArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryPropsConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PropsFilter>;
+};
+
 export type DocumentFilter = {
   menu?: InputMaybe<MenuFilter>;
+  props?: InputMaybe<PropsFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -162,7 +180,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Menu | Folder;
+export type DocumentNode = Menu | Props | Folder;
 
 export type Menu = Node & Document & {
   __typename?: 'Menu';
@@ -210,6 +228,50 @@ export type MenuConnection = Connection & {
   edges?: Maybe<Array<Maybe<MenuConnectionEdges>>>;
 };
 
+export type Props = Node & Document & {
+  __typename?: 'Props';
+  title: Scalars['String']['output'];
+  body?: Maybe<Scalars['JSON']['output']>;
+  link_text?: Maybe<Scalars['String']['output']>;
+  link_url?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  image_secondary?: Maybe<Scalars['String']['output']>;
+  image_alt?: Maybe<Scalars['String']['output']>;
+  image_bg?: Maybe<Scalars['Boolean']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PropsFilter = {
+  title?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  link_text?: InputMaybe<StringFilter>;
+  link_url?: InputMaybe<StringFilter>;
+  image?: InputMaybe<StringFilter>;
+  image_secondary?: InputMaybe<StringFilter>;
+  image_alt?: InputMaybe<StringFilter>;
+  image_bg?: InputMaybe<BooleanFilter>;
+};
+
+export type PropsConnectionEdges = {
+  __typename?: 'PropsConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Props>;
+};
+
+export type PropsConnection = Connection & {
+  __typename?: 'PropsConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<PropsConnectionEdges>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -218,6 +280,8 @@ export type Mutation = {
   createDocument: DocumentNode;
   updateMenu: Menu;
   createMenu: Menu;
+  updateProps: Props;
+  createProps: Props;
 };
 
 
@@ -259,13 +323,27 @@ export type MutationCreateMenuArgs = {
   params: MenuMutation;
 };
 
+
+export type MutationUpdatePropsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PropsMutation;
+};
+
+
+export type MutationCreatePropsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PropsMutation;
+};
+
 export type DocumentUpdateMutation = {
   menu?: InputMaybe<MenuMutation>;
+  props?: InputMaybe<PropsMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
   menu?: InputMaybe<MenuMutation>;
+  props?: InputMaybe<PropsMutation>;
 };
 
 export type MenuMutation = {
@@ -276,7 +354,20 @@ export type MenuMutation = {
   menu?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PropsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  link_text?: InputMaybe<Scalars['String']['input']>;
+  link_url?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  image_secondary?: InputMaybe<Scalars['String']['input']>;
+  image_alt?: InputMaybe<Scalars['String']['input']>;
+  image_bg?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type MenuPartsFragment = { __typename?: 'Menu', title: string, body?: any | null, price?: string | null, type?: string | null, menu?: string | null };
+
+export type PropsPartsFragment = { __typename?: 'Props', title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_alt?: string | null, image_bg?: boolean | null };
 
 export type MenuQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -297,6 +388,25 @@ export type MenuConnectionQueryVariables = Exact<{
 
 export type MenuConnectionQuery = { __typename?: 'Query', menuConnection: { __typename?: 'MenuConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MenuConnectionEdges', cursor: string, node?: { __typename?: 'Menu', id: string, title: string, body?: any | null, price?: string | null, type?: string | null, menu?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
+export type PropsQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type PropsQuery = { __typename?: 'Query', props: { __typename?: 'Props', id: string, title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_alt?: string | null, image_bg?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type PropsConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PropsFilter>;
+}>;
+
+
+export type PropsConnectionQuery = { __typename?: 'Query', propsConnection: { __typename?: 'PropsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PropsConnectionEdges', cursor: string, node?: { __typename?: 'Props', id: string, title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_alt?: string | null, image_bg?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
 export const MenuPartsFragmentDoc = gql`
     fragment MenuParts on Menu {
   title
@@ -304,6 +414,18 @@ export const MenuPartsFragmentDoc = gql`
   price
   type
   menu
+}
+    `;
+export const PropsPartsFragmentDoc = gql`
+    fragment PropsParts on Props {
+  title
+  body
+  link_text
+  link_url
+  image
+  image_secondary
+  image_alt
+  image_bg
 }
     `;
 export const MenuDocument = gql`
@@ -361,6 +483,61 @@ export const MenuConnectionDocument = gql`
   }
 }
     ${MenuPartsFragmentDoc}`;
+export const PropsDocument = gql`
+    query props($relativePath: String!) {
+  props(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PropsParts
+  }
+}
+    ${PropsPartsFragmentDoc}`;
+export const PropsConnectionDocument = gql`
+    query propsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PropsFilter) {
+  propsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PropsParts
+      }
+    }
+  }
+}
+    ${PropsPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -369,6 +546,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     menuConnection(variables?: MenuConnectionQueryVariables, options?: C): Promise<{data: MenuConnectionQuery, variables: MenuConnectionQueryVariables, query: string}> {
         return requester<{data: MenuConnectionQuery, variables: MenuConnectionQueryVariables, query: string}, MenuConnectionQueryVariables>(MenuConnectionDocument, variables, options);
+      },
+    props(variables: PropsQueryVariables, options?: C): Promise<{data: PropsQuery, variables: PropsQueryVariables, query: string}> {
+        return requester<{data: PropsQuery, variables: PropsQueryVariables, query: string}, PropsQueryVariables>(PropsDocument, variables, options);
+      },
+    propsConnection(variables?: PropsConnectionQueryVariables, options?: C): Promise<{data: PropsConnectionQuery, variables: PropsConnectionQueryVariables, query: string}> {
+        return requester<{data: PropsConnectionQuery, variables: PropsConnectionQueryVariables, query: string}, PropsConnectionQueryVariables>(PropsConnectionDocument, variables, options);
       }
     };
   }

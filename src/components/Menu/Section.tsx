@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import type { Menu } from "../../../tina/__generated__/types";
 
 interface Props {
   data?: any | undefined;
 }
 
-export default function Section({ data }: Props) {
+export default function Section({ data }: { data: Menu[] }) {
   const tabs: string[] = ["Dinner", "Brunch", "Four Course"];
   const [activeTab, setActiveTab] = useState<string>(tabs[0]);
 
