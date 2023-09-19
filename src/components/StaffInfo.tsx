@@ -32,8 +32,8 @@ export const StaffInfo = ({ person, side }: StaffInfoProps) => {
           <div
             className={`flex flex-col items-end gap-1 lg:gap-4 relative header ${
               side === "left"
-                ? "md:items-start"
-                : twMerge("before:left-0 before:right-[-30%]")
+                ? "md:items-start before:left-[-30%]"
+                : twMerge("before:right-[-30%]")
             }`}
           >
             <h3
