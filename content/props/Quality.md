@@ -1,7 +1,7 @@
 ---
 title: Qualité
 body: >
-  At Delicieux, every dish is a masterpiece meticulously crafted with the finest
+  At Délicieux, every dish is a masterpiece meticulously crafted with the finest
   ingredients sourced from across France. Chef Jared Steen's unyielding
   dedication to perfection is evident in every exquisite creation that graces
   the plate, where each bite is an enchanting journey of flavor and texture. The
@@ -15,5 +15,6 @@ image_alt: Food served with beautiful plating
 image_bg: true
 image_secondary: /quality2.png
 ---
+
 
 

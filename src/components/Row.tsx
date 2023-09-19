@@ -1,13 +1,13 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-interface Props {
+interface RowProps {
   side?: "left" | "right";
   className?: string;
   children: React.ReactNode;
 }
 
-export const Row = ({ side = "left", className, children }: Props) => {
+export const Row = ({ side = "left", className, children }: RowProps) => {
   return (
     <div
       className={`w-full flex ${

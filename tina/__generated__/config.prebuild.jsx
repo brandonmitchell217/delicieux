@@ -105,6 +105,47 @@ var config_default = defineConfig({
             label: "Image Background"
           }
         ]
+      },
+      {
+        name: "staff",
+        label: "Staff",
+        path: "content/staff",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            required: true
+          },
+          {
+            type: "string",
+            name: "icon",
+            label: "Icon"
+          },
+          {
+            type: "string",
+            name: "name",
+            label: "Name",
+            required: true
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Prop Body",
+            required: true
+          },
+          {
+            type: "string",
+            name: "image",
+            label: "Image"
+          },
+          {
+            type: "number",
+            name: "order",
+            label: "Order Number",
+            required: true
+          }
+        ]
       }
     ]
   }

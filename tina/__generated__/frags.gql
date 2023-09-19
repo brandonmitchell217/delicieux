@@ -16,3 +16,12 @@ fragment PropsParts on Props {
   image_alt
   image_bg
 }
+
+fragment StaffParts on Staff {
+  title
+  icon
+  name
+  body
+  image
+  order
+}
