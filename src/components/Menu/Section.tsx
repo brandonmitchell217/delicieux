@@ -1,14 +1,46 @@
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import type { Menu } from "../../../tina/__generated__/types";
+import type {
+  Menu,
+  MenuConnectionEdges,
+  MenuConnectionQueryVariables,
+  MenuFilter,
+  PageInfo,
+} from "../../../tina/__generated__/types";
+import { useTina } from "tinacms/dist/react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 
-interface Props {
-  data?: any | undefined;
+interface SectionProps {
+  resp: {
+    data: {
+      menuConnection: {
+        pageInfo: PageInfo;
+        totalCount: number;
+        edges?: MenuConnectionEdges[] | any;
+      };
+    };
+    query: string;
+    variables: MenuConnectionQueryVariables;
+  };
 }
 
-export default function Section({ data }: { data: Menu[] }) {
+export default function Section({ resp }: SectionProps) {
   const tabs: string[] = ["Dinner", "Brunch", "Four Course"];
   const [activeTab, setActiveTab] = useState<string>(tabs[0]);
+
+  const items = resp.data.menuConnection.edges?.map(
+    (item: MenuConnectionEdges) => {
+      return item.node;
+    }
+  );
+
+  // console.log(items);
+
+  const { data } = useTina({
+    query: resp.query,
+    data: resp.data,
+    variables: resp.variables,
+  });
 
   const Tabs = () => {
     return (
@@ -29,26 +61,15 @@ export default function Section({ data }: { data: Menu[] }) {
     );
   };
 
-  function description(item: Props["data"]) {
-    let body = item.slug.body.children[0].children[0].text;
-    return body;
-  }
-
-  const itemType = data.map((item: Props["data"]) => item.slug.type);
-
-  // console.log(data);
-  //   console.log(
-  //     data.map((item: any) => item.slug.body.children[0].children[0].text)
-  //   );
-
   const MenuType = (menu: string) => {
-    return data.filter(
-      (item: any) => item.slug.menu.toLowerCase() === menu.toLowerCase()
+    return items.filter(
+      (item: MenuFilter | any) =>
+        item.menu?.toLowerCase() === menu.toLowerCase()
     );
   };
 
   type CardProps = {
-    item: Props["data"];
+    item: Menu;
     index?: number;
   };
 
@@ -58,16 +79,16 @@ export default function Section({ data }: { data: Menu[] }) {
         key={index}
         className="h-full w-full flex gap-2 justify-center items-end"
       >
-        <div className="">
+        <div>
           <h1 className="font-bold text-xl leading-none max-w-[28ch]">
-            {item.slug.title}
+            {item.title}
           </h1>
-          <p className="font-light text-sm">{description(item)}</p>
+          <TinaMarkdown content={item.body} />
         </div>
 
         <div className="flex-1 flex gap-1 justify-center items-end">
           <div className="h-1 mb-1 w-full border-b-2 border-dotted border-dark"></div>
-          <p>${item.slug.price}</p>
+          <p>${item.price}</p>
         </div>
       </div>
     );
@@ -77,26 +98,32 @@ export default function Section({ data }: { data: Menu[] }) {
     <div className="space-y-20 px-2 sm:px-0">
       <Tabs />
       <div className="max-w-6xl m-auto space-y-12">
-        <h2 className="text-5xl font-bold">Appetizers</h2>
+        {activeTab != tabs[2] ? (
+          <h2 className="text-5xl font-bold">Appetizers</h2>
+        ) : null}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full sm:px-8 lg:place-items-center">
           {MenuType(activeTab)
             .filter(
-              (item: Props["data"]) =>
-                item.slug.type.toLowerCase() === "appetizer"
+              (item: MenuFilter | any) =>
+                item.type.toLowerCase() === "appetizer"
             )
-            .map((item: Props["data"], index: number) => (
+            .map((item: Menu, index: number) => (
               <Card item={item} key={index} />
             ))}
         </div>
       </div>
       <div className="max-w-6xl m-auto space-y-12">
-        <h2 className="text-5xl font-bold">Entrees</h2>
+        {activeTab != tabs[2] ? (
+          <h2 className="text-5xl font-bold">Entrees</h2>
+        ) : null}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full sm:px-8 lg:place-items-center">
           {MenuType(activeTab)
             .filter(
-              (item: Props["data"]) => item.slug.type.toLowerCase() === "entree"
+              (item: MenuFilter | any) => item.type.toLowerCase() === "entree"
             )
-            .map((item: Props["data"], index: number) => (
+            .map((item: Menu, index: number) => (
               <Card item={item} key={index} />
             ))}
         </div>
