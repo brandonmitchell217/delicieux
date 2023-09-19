@@ -85,6 +85,8 @@ export type Query = {
   menuConnection: MenuConnection;
   props: Props;
   propsConnection: PropsConnection;
+  staff: Staff;
+  staffConnection: StaffConnection;
 };
 
 
@@ -138,9 +140,25 @@ export type QueryPropsConnectionArgs = {
   filter?: InputMaybe<PropsFilter>;
 };
 
+
+export type QueryStaffArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryStaffConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<StaffFilter>;
+};
+
 export type DocumentFilter = {
   menu?: InputMaybe<MenuFilter>;
   props?: InputMaybe<PropsFilter>;
+  staff?: InputMaybe<StaffFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -180,7 +198,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Menu | Props | Folder;
+export type DocumentNode = Menu | Props | Staff | Folder;
 
 export type Menu = Node & Document & {
   __typename?: 'Menu';
@@ -272,6 +290,51 @@ export type PropsConnection = Connection & {
   edges?: Maybe<Array<Maybe<PropsConnectionEdges>>>;
 };
 
+export type Staff = Node & Document & {
+  __typename?: 'Staff';
+  title: Scalars['String']['output'];
+  icon?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  body: Scalars['JSON']['output'];
+  image?: Maybe<Scalars['String']['output']>;
+  order: Scalars['Float']['output'];
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type NumberFilter = {
+  lt?: InputMaybe<Scalars['Float']['input']>;
+  lte?: InputMaybe<Scalars['Float']['input']>;
+  gte?: InputMaybe<Scalars['Float']['input']>;
+  gt?: InputMaybe<Scalars['Float']['input']>;
+  eq?: InputMaybe<Scalars['Float']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
+};
+
+export type StaffFilter = {
+  title?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  image?: InputMaybe<StringFilter>;
+  order?: InputMaybe<NumberFilter>;
+};
+
+export type StaffConnectionEdges = {
+  __typename?: 'StaffConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Staff>;
+};
+
+export type StaffConnection = Connection & {
+  __typename?: 'StaffConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<StaffConnectionEdges>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -282,6 +345,8 @@ export type Mutation = {
   createMenu: Menu;
   updateProps: Props;
   createProps: Props;
+  updateStaff: Staff;
+  createStaff: Staff;
 };
 
 
@@ -335,15 +400,29 @@ export type MutationCreatePropsArgs = {
   params: PropsMutation;
 };
 
+
+export type MutationUpdateStaffArgs = {
+  relativePath: Scalars['String']['input'];
+  params: StaffMutation;
+};
+
+
+export type MutationCreateStaffArgs = {
+  relativePath: Scalars['String']['input'];
+  params: StaffMutation;
+};
+
 export type DocumentUpdateMutation = {
   menu?: InputMaybe<MenuMutation>;
   props?: InputMaybe<PropsMutation>;
+  staff?: InputMaybe<StaffMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
   menu?: InputMaybe<MenuMutation>;
   props?: InputMaybe<PropsMutation>;
+  staff?: InputMaybe<StaffMutation>;
 };
 
 export type MenuMutation = {
@@ -365,9 +444,20 @@ export type PropsMutation = {
   image_bg?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type StaffMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
+};
+
 export type MenuPartsFragment = { __typename?: 'Menu', title: string, body?: any | null, price?: string | null, type?: string | null, menu?: string | null };
 
 export type PropsPartsFragment = { __typename?: 'Props', title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_alt?: string | null, image_bg?: boolean | null };
+
+export type StaffPartsFragment = { __typename?: 'Staff', title: string, icon?: string | null, name: string, body: any, image?: string | null, order: number };
 
 export type MenuQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -407,6 +497,25 @@ export type PropsConnectionQueryVariables = Exact<{
 
 export type PropsConnectionQuery = { __typename?: 'Query', propsConnection: { __typename?: 'PropsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PropsConnectionEdges', cursor: string, node?: { __typename?: 'Props', id: string, title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_alt?: string | null, image_bg?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
+export type StaffQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type StaffQuery = { __typename?: 'Query', staff: { __typename?: 'Staff', id: string, title: string, icon?: string | null, name: string, body: any, image?: string | null, order: number, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type StaffConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<StaffFilter>;
+}>;
+
+
+export type StaffConnectionQuery = { __typename?: 'Query', staffConnection: { __typename?: 'StaffConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'StaffConnectionEdges', cursor: string, node?: { __typename?: 'Staff', id: string, title: string, icon?: string | null, name: string, body: any, image?: string | null, order: number, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
 export const MenuPartsFragmentDoc = gql`
     fragment MenuParts on Menu {
   title
@@ -426,6 +535,16 @@ export const PropsPartsFragmentDoc = gql`
   image_secondary
   image_alt
   image_bg
+}
+    `;
+export const StaffPartsFragmentDoc = gql`
+    fragment StaffParts on Staff {
+  title
+  icon
+  name
+  body
+  image
+  order
 }
     `;
 export const MenuDocument = gql`
@@ -538,6 +657,61 @@ export const PropsConnectionDocument = gql`
   }
 }
     ${PropsPartsFragmentDoc}`;
+export const StaffDocument = gql`
+    query staff($relativePath: String!) {
+  staff(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...StaffParts
+  }
+}
+    ${StaffPartsFragmentDoc}`;
+export const StaffConnectionDocument = gql`
+    query staffConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: StaffFilter) {
+  staffConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...StaffParts
+      }
+    }
+  }
+}
+    ${StaffPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -552,6 +726,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     propsConnection(variables?: PropsConnectionQueryVariables, options?: C): Promise<{data: PropsConnectionQuery, variables: PropsConnectionQueryVariables, query: string}> {
         return requester<{data: PropsConnectionQuery, variables: PropsConnectionQueryVariables, query: string}, PropsConnectionQueryVariables>(PropsConnectionDocument, variables, options);
+      },
+    staff(variables: StaffQueryVariables, options?: C): Promise<{data: StaffQuery, variables: StaffQueryVariables, query: string}> {
+        return requester<{data: StaffQuery, variables: StaffQueryVariables, query: string}, StaffQueryVariables>(StaffDocument, variables, options);
+      },
+    staffConnection(variables?: StaffConnectionQueryVariables, options?: C): Promise<{data: StaffConnectionQuery, variables: StaffConnectionQueryVariables, query: string}> {
+        return requester<{data: StaffConnectionQuery, variables: StaffConnectionQueryVariables, query: string}, StaffConnectionQueryVariables>(StaffConnectionDocument, variables, options);
       }
     };
   }

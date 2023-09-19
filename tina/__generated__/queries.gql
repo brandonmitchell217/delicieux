@@ -103,3 +103,56 @@ query propsConnection($before: String, $after: String, $first: Float, $last: Flo
     }
   }
 }
+
+query staff($relativePath: String!) {
+  staff(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...StaffParts
+  }
+}
+
+query staffConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: StaffFilter) {
+  staffConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...StaffParts
+      }
+    }
+  }
+}

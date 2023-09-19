@@ -1,22 +1,15 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-
-export interface StaffProps {
-  id: number;
-  title: string;
-  name: string;
-  description: string;
-  image: string;
-  icon: string;
+import type { StaffFilter } from "../../tina/__generated__/types";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+interface StaffInfoProps {
+  person: any;
+  side: string | number;
 }
 
-export const StaffInfo = ({
-  person,
-  side,
-}: {
-  person: StaffProps;
-  side: string | number;
-}) => {
+export const StaffInfo = ({ person, side }: StaffInfoProps) => {
+  if (!person) return null;
+
   return (
     <div className="pt-10 pb-16 md:py-8 px-8 md:px-4 overflow-x-hidden">
       <div
@@ -59,13 +52,13 @@ export const StaffInfo = ({
               {person.name}
             </h4>
           </div>
-          <p
+          <div
             className={`font-crimson text-right text-[14px] sm:text-base leading-[1.5em] md:px-4 ${
               side === "left" ? twMerge("md:text-left") : ""
             }`}
           >
-            {person.description}
-          </p>
+            <TinaMarkdown content={person.body} />
+          </div>
         </div>
       </div>
     </div>

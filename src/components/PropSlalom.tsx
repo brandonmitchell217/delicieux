@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import type { Props } from "../../tina/__generated__/types";
-import { CurrentUrl } from "../lib/util";
-
-// export type PropProps = {
-//   title: string;
-//   description: string;
-//   link: { label: string; url: string };
-//   images: string[];
-// };
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 interface SlalomProps {
-  prop: Props[];
+  prop: Props[] | any;
   side?: "left" | "right";
 }
 
 // TODO: Figure out why image doesn't change on interval
+// TODO: Add in boolean for arrow/button for cta
 
 export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
-  const imgArr = [prop[0].image, prop[0].image_secondary];
+  if (!prop) {
+    return null;
+  }
+
+  const data = prop[0];
+  const imgArr = [data.image, data.image_secondary];
   const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
       setImageIndex((prevIndex) => (prevIndex + 1) % imgArr.length);
     }, 6000);
 
-    console.log(prop[0]);
+    // console.log(data);
 
     return () => {
       clearInterval(interval);
@@ -44,18 +43,18 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
       >
         <div className=" flex flex-col">
           <h2 className="relative font-crimson font-bold text-[88px] xl:text-[144px] leading-[.877em] w-max">
-            {prop[0].title}
+            {data.title}
             <div className="absolute -z-10 h-2.5 w-[72%] bottom-0 right-2 bg-red rounded-full"></div>
           </h2>
           <div className="lg:w-[80%] space-y-4 md:pl-8 md:pr-4 lg:pl-14 lg:pr-0">
-            <p className="pt-8 text-[16px] xl:text-[22px] leading-[1.5em] tracking-[.02em] ">
-              {prop[0].body}
-            </p>
+            <div className="pt-8 text-[16px] xl:text-[22px] leading-[1.5em] tracking-[.02em] ">
+              <TinaMarkdown content={data.body} />
+            </div>
             <a
-              href={prop[0].link_url as string}
+              href={data.link_url as string}
               className="md:ml-4 font-crimson text-[20px] lg:text-[28px] tracking-[.02em] flex items-center gap-4 md:gap-8 group"
             >
-              {prop[0].link_text}
+              {data.link_text}
               <svg
                 width="141"
                 height="24"
@@ -75,11 +74,13 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
         <div className="relative">
           <img
             src={imageSrc}
-            alt={`${prop[0].title} image`}
+            alt={`${data.title} image`}
             loading="lazy"
             className="shadow-sm max-w-[355px] w-[80vw] sm:w-[40vw] md:w-[30vw] h-auto"
           />
-          <div className="absolute -z-10 -right-4 -top-3 h-full w-full border-2 border-dark rounded-2xl"></div>
+          {data.image_bg && (
+            <div className="absolute -z-10 -right-4 -top-3 h-full w-full border-2 border-dark rounded-2xl"></div>
+          )}
         </div>
       </div>
     </div>

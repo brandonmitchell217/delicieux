@@ -57,11 +57,14 @@ type Query {
   menuConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: MenuFilter): MenuConnection!
   props(relativePath: String): Props!
   propsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PropsFilter): PropsConnection!
+  staff(relativePath: String): Staff!
+  staffConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: StaffFilter): StaffConnection!
 }
 
 input DocumentFilter {
   menu: MenuFilter
   props: PropsFilter
+  staff: StaffFilter
 }
 
 type DocumentConnectionEdges {
@@ -87,7 +90,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Menu | Props | Folder
+union DocumentNode = Menu | Props | Staff | Folder
 
 type Menu implements Node & Document {
   title: String!
@@ -173,6 +176,48 @@ type PropsConnection implements Connection {
   edges: [PropsConnectionEdges]
 }
 
+type Staff implements Node & Document {
+  title: String!
+  icon: String
+  name: String!
+  body: JSON!
+  image: String
+  order: Float!
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
+input StaffFilter {
+  title: StringFilter
+  icon: StringFilter
+  name: StringFilter
+  body: RichTextFilter
+  image: StringFilter
+  order: NumberFilter
+}
+
+type StaffConnectionEdges {
+  cursor: String!
+  node: Staff
+}
+
+type StaffConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [StaffConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -182,17 +227,21 @@ type Mutation {
   createMenu(relativePath: String!, params: MenuMutation!): Menu!
   updateProps(relativePath: String!, params: PropsMutation!): Props!
   createProps(relativePath: String!, params: PropsMutation!): Props!
+  updateStaff(relativePath: String!, params: StaffMutation!): Staff!
+  createStaff(relativePath: String!, params: StaffMutation!): Staff!
 }
 
 input DocumentUpdateMutation {
   menu: MenuMutation
   props: PropsMutation
+  staff: StaffMutation
   relativePath: String
 }
 
 input DocumentMutation {
   menu: MenuMutation
   props: PropsMutation
+  staff: StaffMutation
 }
 
 input MenuMutation {
@@ -212,6 +261,15 @@ input PropsMutation {
   image_secondary: String
   image_alt: String
   image_bg: Boolean
+}
+
+input StaffMutation {
+  title: String
+  icon: String
+  name: String
+  body: JSON
+  image: String
+  order: Float
 }
 
 schema {
