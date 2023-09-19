@@ -23,6 +23,11 @@ var config_default = defineConfig({
         name: "menu",
         label: "Menu Items",
         path: "content/menu",
+        ui: {
+          router: (props) => {
+            return "/menu";
+          }
+        },
         fields: [
           {
             type: "string",

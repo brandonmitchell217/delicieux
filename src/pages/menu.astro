@@ -7,16 +7,14 @@ import { Footer } from "../components/Footer";
 import { NavDark } from "../components/NavDark";
 
 const menuResponse = await client.queries.menuConnection()
-const items = menuResponse.data.menuConnection.edges?.map((item) => {
-	return { slug: item?.node }
-}) as any
+
 ---
 
 <Layout title="Menus - Delicieux">
    <Banner />
    <NavDark client:load />
    <main class="py-32 space-y-16">
-      <Section data={items} client:load />
+      <Section resp={menuResponse} client:load />
    </main>
    <Footer />
 </Layout>
