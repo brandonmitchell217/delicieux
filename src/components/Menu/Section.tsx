@@ -116,7 +116,9 @@ export default function Section({ resp }: SectionProps) {
       <div className="max-w-6xl m-auto space-y-12">
         {activeTab != tabs[2] ? (
           <h2 className="text-5xl font-bold">Entrees</h2>
-        ) : null}
+        ) : (
+          <h2 className="text-5xl font-bold">Four Course Dinner</h2>
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-12 w-full sm:px-8 lg:place-items-center">
           {MenuType(activeTab)
