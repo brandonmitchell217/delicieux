@@ -1,9 +1,10 @@
 ---
-title: Four Course
+title: Chef's Four Course Experience
 body: |
-  fojers ser
+  antipasto / pasta or risotto / entrée / dolce - wine pairing available
 price: '242'
 type: Entree
 menu: four course
 ---
+
 
