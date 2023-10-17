@@ -11,7 +11,7 @@ export const StaffInfo = ({ person, side }: StaffInfoProps) => {
   if (!person) return null;
 
   return (
-    <div className="pt-10 pb-16 md:py-8 px-8 md:px-4 overflow-x-hidden">
+    <div className="py-12 md:py-8 lg:py-0 px-8 md:px-4 overflow-x-hidden">
       <div
         className={`flex flex-col gap-8 lg:gap-[30px] justify-center md:justify-stretch items-center md:max-w-[868px] ${
           side === "left"
