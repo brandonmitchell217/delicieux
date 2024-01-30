@@ -12,8 +12,8 @@ module.exports = {
         light: "#E6E8E6",
       },
       fontFamily: {
-        crimson: ["Crimson Pro", "serif", ...defaultTheme.fontFamily.serif],
-        sans: ["Open Sans", "sans-serif", ...defaultTheme.fontFamily.sans],
+        crimson: ["var(--crimson-pro)", ...defaultTheme.fontFamily.serif],
+        sans: ["var(--open-sans)", ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         landing: "url('/landing.jpg')",
