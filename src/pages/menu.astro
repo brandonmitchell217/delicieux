@@ -1,20 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import { Section } from "../components/Menu";
 import client from "../../tina/__generated__/client";
-import Banner from "../components/Banner";
+// import Banner from "../components/Banner";
 import { Footer } from "../components/Footer";
 import { NavDark } from "../components/NavDark";
 
-const menuResponse = await client.queries.menuConnection()
-
+const menuResponse = await client.queries.menuConnection();
 ---
 
 <Layout title="Menus - Delicieux">
-   <Banner />
-   <NavDark client:load />
-   <main class="py-32 space-y-16">
-      <Section resp={menuResponse} client:load />
-   </main>
-   <Footer />
+  <!-- <Banner /> -->
+  <NavDark client:load />
+  <main class="py-32 space-y-16">
+    <Section resp={menuResponse} client:load />
+  </main>
+  <Footer />
 </Layout>

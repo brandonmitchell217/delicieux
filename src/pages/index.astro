@@ -1,96 +1,102 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import { Landing } from "../components/Landing";
 import { Nav } from "../components/Nav";
-import {PropSlalom } from '../components/PropSlalom'
+import { PropSlalom } from "../components/PropSlalom";
 import { ChefsTable } from "../components/ChefsTable";
 import { InterstitialImg } from "../components/InterstitialImg";
 import { Row } from "../components/Row";
 import { StaffInfo } from "../components/StaffInfo";
 import { Footer } from "../components/Footer";
-import Banner from "../components/Banner";
+// import Banner from "../components/Banner";
 import client from "../../tina/__generated__/client";
-import type { PropsConnection, StaffConnection, Staff } from "../../tina/__generated__/types";
+import type {
+  PropsConnection,
+  StaffConnection,
+  Staff,
+} from "../../tina/__generated__/types";
 
-const propResponse = await client.queries.propsConnection()
+const propResponse = await client.queries.propsConnection();
 const PropsArr = propResponse.data.propsConnection.edges?.map((item) => {
-	return { slug: item?.node }
-}) as PropsConnection['edges']
+  return { slug: item?.node };
+}) as PropsConnection["edges"];
 
-const staffResponse = await client.queries.staffConnection()
+const staffResponse = await client.queries.staffConnection();
 const StaffArr = staffResponse.data.staffConnection.edges?.map((item) => {
-	return { slug: item?.node }
-}) as StaffConnection['edges']
+  return { slug: item?.node };
+}) as StaffConnection["edges"];
 
 const PropData = PropsArr?.map((item: any) => {
-	return {
-		title: item.slug.title,
-		body: item.slug.body,
-		link_url: item.slug.link_url,
-		link_text: item.slug.link_text,
-		image: item.slug.image,
-		image_secondary: item.slug.image_secondary,
-		image_alt: item.slug.image_alt,
-		image_bg: item.slug.image_bg,
-	}
-})
-
-
+  return {
+    title: item.slug.title,
+    body: item.slug.body,
+    link_url: item.slug.link_url,
+    link_text: item.slug.link_text,
+    image: item.slug.image,
+    image_secondary: item.slug.image_secondary,
+    image_alt: item.slug.image_alt,
+    image_bg: item.slug.image_bg,
+  };
+});
 
 const StaffData = StaffArr?.map((item: any) => {
-	return {
-		title: item.slug.title,
-		icon: item.slug.icon,
-		name: item.slug.name,
-		body: item.slug.body,
-		image: item.slug.image,
-		order: item.slug.order,
-	}
-})
+  return {
+    title: item.slug.title,
+    icon: item.slug.icon,
+    name: item.slug.name,
+    body: item.slug.body,
+    image: item.slug.image,
+    order: item.slug.order,
+  };
+});
 
 // console.log(StaffData);
 
-
 function determineSide(index: number) {
-	return index % 2 == 0 ? 'right' : 'left'
+  return index % 2 == 0 ? "right" : "left";
 }
 ---
 
-
-
-
-
 <Layout title="Delicieux - A French Restaurant">
-	<Banner />
-	<Nav client:load />
-	<main>
-		<section class="space-y-12 sm:space-y-24">
-			<Landing />
-			<img src="/fancyLines1.png" alt="fancy lines" class="w-[90%] md:max-w-[550px] h-auto m-auto">
-		</section>
-		<section>
-			<PropSlalom prop={PropData} client:load />
-		</section>
-		<section>
-			<ChefsTable />
-		</section>
-		<InterstitialImg label="Restaurant" src="/interstitial.jpg" />
-		<section id="about" class="pb-16">
-			{StaffData?.sort((a: any, b: any) => a.order - b.order).map((person) => {
-				return (
-					<Row side={determineSide(person.order)}>
-						<StaffInfo person={person} side={determineSide(person.order)} client:load />
-				</Row>
-				)
-			})}
-		</section>
-	</main>
-	<Footer />
+  <!-- <Banner /> -->
+  <Nav client:load />
+  <main>
+    <section class="space-y-12 sm:space-y-24">
+      <Landing />
+      <img
+        src="/fancyLines1.png"
+        alt="fancy lines"
+        class="w-[90%] md:max-w-[550px] h-auto m-auto"
+      />
+    </section>
+    <section>
+      <PropSlalom prop={PropData} client:load />
+    </section>
+    <section>
+      <ChefsTable />
+    </section>
+    <InterstitialImg label="Restaurant" src="/interstitial.jpg" />
+    <section id="about" class="pb-16">
+      {
+        StaffData?.sort((a: any, b: any) => a.order - b.order).map((person) => {
+          return (
+            <Row side={determineSide(person.order)}>
+              <StaffInfo
+                person={person}
+                side={determineSide(person.order)}
+                client:load
+              />
+            </Row>
+          );
+        })
+      }
+    </section>
+  </main>
+  <Footer />
 </Layout>
 
 <style>
-section {
-	@apply max-w-7xl m-auto;
-}
-
+  section {
+    @apply max-w-7xl m-auto;
+  }
 </style>
