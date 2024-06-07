@@ -32,7 +32,7 @@ export default function NavMenu({
         <ul className="space-y-14 text-center md:text-left text-2xl sm:text-3xl lg:text-5xl font-semibold">
           <li>
             <a
-              href="/#about"
+              href="/aboutus"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="hover:text-light/70 transition-all"
             >

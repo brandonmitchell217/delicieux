@@ -35,7 +35,7 @@ export const Footer = () => {
           </a>
           <ul className="pt-1 lg:pt-0 flex gap-16 text-[18px] xl:text-[24px] border-t border-light lg:border-0">
             <li>
-              <a href="/#about" className="hover:text-light/80">
+              <a href="/aboutus" className="hover:text-light/80">
                 About Us
               </a>
             </li>

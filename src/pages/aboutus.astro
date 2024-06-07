@@ -1,0 +1,105 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { NavDark } from "../components/NavDark";
+import client from "../../tina/__generated__/client";
+import type { Staff, Props } from "../../tina/__generated__/types";
+import { Row } from "../components/Row";
+import { StaffInfo } from "../components/StaffInfo";
+import { Landing } from "../components/Landing";
+import { Footer } from "../components/Footer";
+
+const staffResponse = await client.queries.staffConnection();
+const StaffArr = staffResponse.data.staffConnection.edges?.map((item) => {
+  return item?.node as Staff;
+}) as Staff[];
+
+const StaffData = StaffArr?.map((staff) => {
+  return {
+    title: staff.title,
+    icon: staff.icon ?? undefined,
+    name: staff.name,
+    body: staff.body,
+    image: staff.image ?? undefined,
+    order: staff.order,
+  };
+});
+
+function determineSide(index: number) {
+  return index % 2 == 0 ? "right" : "left";
+}
+
+interface StaffDataType {
+  title: string;
+  icon: string | undefined;
+  name: string;
+  body: any;
+  image: string | undefined;
+  order: number;
+}
+---
+
+<Layout title="Delicieux - A French Restaurant">
+  <NavDark client:load />
+
+  <main class="py-32 space-y-16">
+    <section class="space-y-12 sm:space-y-24">
+      <Landing bgImage={"staff"} content={false} />
+      <img
+        src="/fancyLines1.png"
+        alt="fancy lines"
+        class="w-[90%] md:max-w-[550px] h-auto m-auto"
+      />
+    </section>
+
+    <section id="story">
+      <div class="flex flex-col items-center space-y-12">
+        <h1
+          class="relative font-crimson font-bold text-[48px] xl:text-[88px] leading-[.877em] w-max"
+        >
+          Our Story
+          <div
+            class="absolute -z-10 h-2.5 w-full bottom-0 -right-1 bg-red rounded-full"
+          >
+          </div>
+        </h1>
+        <p class="text-center max-w-[800px]">
+          Delicieux is a French restaurant located in the heart of downtown
+          Toronto. We offer a wide range of French cuisine, from traditional
+          dishes to modern interpretations. Our menu is inspired by the
+          traditional French cuisine, with a modern twist. We use only the
+          freshest ingredients, sourced locally whenever possible. Our dishes
+          are prepared with care and attention to detail, ensuring that each
+          bite is a delight for the senses.
+        </p>
+      </div>
+    </section>
+
+    <section id="staff" class="py-16 space-y-12 sm:space-y-24">
+      <h1
+        class="relative font-crimson font-bold text-[48px] xl:text-[88px] leading-[.877em] w-max"
+      >
+        Our Staff
+        <div
+          class="absolute -z-10 h-2.5 w-full bottom-0 -right-1 bg-red rounded-full"
+        >
+        </div>
+      </h1>
+      {
+        StaffData?.sort(
+          (a: StaffDataType, b: StaffDataType) => a.order - b.order
+        ).map((person) => {
+          return (
+            <Row side={determineSide(person.order)}>
+              <StaffInfo
+                person={person}
+                side={determineSide(person.order)}
+                client:load
+              />
+            </Row>
+          );
+        })
+      }
+    </section>
+  </main>
+  <Footer />
+</Layout>
