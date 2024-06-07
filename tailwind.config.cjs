@@ -18,6 +18,8 @@ module.exports = {
       backgroundImage: {
         landing: "url('/landing.jpg')",
         landingMobile: "url('/landing_mobile.jpg')",
+        staffLanding: "url('/staff-landing.jpg')",
+        staffLandingMobile: "url('/staff-landing_mobile.jpg')",
       },
     },
   },

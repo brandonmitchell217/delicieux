@@ -5,28 +5,15 @@ import { Nav } from "../components/Nav";
 import { PropSlalom } from "../components/PropSlalom";
 import { ChefsTable } from "../components/ChefsTable";
 import { InterstitialImg } from "../components/InterstitialImg";
-import { Row } from "../components/Row";
-import { StaffInfo } from "../components/StaffInfo";
 import { Footer } from "../components/Footer";
 // import Banner from "../components/Banner";
 import client from "../../tina/__generated__/client";
-import type {
-  PropsConnection,
-  StaffConnection,
-  Staff,
-  DocumentConnection,
-  Props,
-} from "../../tina/__generated__/types";
+import type { Props } from "../../tina/__generated__/types";
 
 const propResponse = await client.queries.propsConnection();
 const PropsArr = propResponse.data.propsConnection.edges?.map((item) => {
   return item?.node as Props;
 }) as Props[];
-
-const staffResponse = await client.queries.staffConnection();
-const StaffArr = staffResponse.data.staffConnection.edges?.map((item) => {
-  return item?.node as Staff;
-}) as Staff[];
 
 const PropData = PropsArr?.map((prop) => {
   return {
@@ -40,32 +27,6 @@ const PropData = PropsArr?.map((prop) => {
     image_bg: prop.image_bg,
   };
 });
-
-const StaffData = StaffArr?.map((staff) => {
-  return {
-    title: staff.title,
-    icon: staff.icon ?? undefined,
-    name: staff.name,
-    body: staff.body,
-    image: staff.image ?? undefined,
-    order: staff.order,
-  };
-});
-
-// console.log(StaffData);
-
-function determineSide(index: number) {
-  return index % 2 == 0 ? "right" : "left";
-}
-
-export interface StaffDataType {
-  title: string;
-  icon: string | undefined;
-  name: string;
-  body: any;
-  image: string | undefined;
-  order: number;
-}
 ---
 
 <Layout title="Delicieux - A French Restaurant">
@@ -73,7 +34,7 @@ export interface StaffDataType {
   <Nav client:load />
   <main>
     <section class="space-y-12 sm:space-y-24">
-      <Landing />
+      <Landing bgImage={"landing"} content={true} />
       <img
         src="/fancyLines1.png"
         alt="fancy lines"
@@ -87,23 +48,6 @@ export interface StaffDataType {
       <ChefsTable />
     </section>
     <InterstitialImg label="Restaurant" src="/interstitial.jpg" />
-    <section id="about" class="pb-16">
-      {
-        StaffData?.sort(
-          (a: StaffDataType, b: StaffDataType) => a.order - b.order
-        ).map((person) => {
-          return (
-            <Row side={determineSide(person.order)}>
-              <StaffInfo
-                person={person}
-                side={determineSide(person.order)}
-                client:load
-              />
-            </Row>
-          );
-        })
-      }
-    </section>
   </main>
   <Footer />
 </Layout>
