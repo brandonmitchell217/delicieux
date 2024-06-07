@@ -13,33 +13,35 @@ export const StaffInfo = ({ person, side }: StaffInfoProps) => {
   return (
     <div className="py-12 md:py-8 lg:py-0 px-8 md:px-4 overflow-x-hidden">
       <div
-        className={`flex flex-col gap-8 lg:gap-[30px] justify-center md:justify-stretch items-center md:max-w-[868px] ${
-          side === "left"
-            ? twMerge("md:flex-row")
-            : twMerge("md:flex-row-reverse")
-        }`}
+        className={twMerge(
+          "flex flex-col gap-8 lg:gap-[30px] justify-center md:justify-stretch items-center md:max-w-[868px]",
+          side === "left" ? "md:flex-row" : "md:flex-row-reverse"
+        )}
       >
         <img
           src={person.image}
           alt="image of person"
-          className={`w-66 md:w-52 h-auto lg:w-full ${
+          className={twMerge(
+            "w-66 md:w-52 h-auto lg:w-full",
             side === "left"
-              ? twMerge("self-end md:self-stretch")
-              : twMerge("self-start md:self-stretch")
-          }`}
+              ? "self-end md:self-stretch"
+              : "self-start md:self-stretch"
+          )}
         />
         <div className="space-y-2 sm:space-y-4">
           <div
-            className={`flex flex-col items-end gap-1 lg:gap-4 relative header ${
+            className={twMerge(
+              "flex flex-col items-end gap-1 lg:gap-4 relative header",
               side === "left"
                 ? "md:items-start before:left-[-30%]"
-                : twMerge("before:right-[-30%]")
-            }`}
+                : "before:right-[-30%]"
+            )}
           >
             <h3
-              className={`flex flex-row-reverse gap-3 text-[42px] lg:text-[56px] leading-[.877em] ${
-                side === "left" ? twMerge("md:flex-row") : ""
-              }`}
+              className={twMerge(
+                "flex flex-row-reverse gap-3 text-[42px] lg:text-[56px] leading-[.877em]",
+                side === "left" ? "md:flex-row" : ""
+              )}
             >
               {person.title}
               <img
@@ -53,9 +55,10 @@ export const StaffInfo = ({ person, side }: StaffInfoProps) => {
             </h4>
           </div>
           <div
-            className={`font-crimson text-right text-[14px] sm:text-base leading-[1.5em] md:px-4 ${
-              side === "left" ? twMerge("md:text-left") : ""
-            }`}
+            className={twMerge(
+              "font-crimson text-right text-[14px] sm:text-base leading-[1.5em] md:px-4",
+              side === "left" && "md:text-left"
+            )}
           >
             <TinaMarkdown content={person.body} />
           </div>
