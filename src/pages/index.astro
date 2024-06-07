@@ -14,39 +14,41 @@ import type {
   PropsConnection,
   StaffConnection,
   Staff,
+  DocumentConnection,
+  Props,
 } from "../../tina/__generated__/types";
 
 const propResponse = await client.queries.propsConnection();
 const PropsArr = propResponse.data.propsConnection.edges?.map((item) => {
-  return { slug: item?.node };
-}) as PropsConnection["edges"];
+  return item?.node as Props;
+}) as Props[];
 
 const staffResponse = await client.queries.staffConnection();
 const StaffArr = staffResponse.data.staffConnection.edges?.map((item) => {
-  return { slug: item?.node };
-}) as StaffConnection["edges"];
+  return item?.node as Staff;
+}) as Staff[];
 
-const PropData = PropsArr?.map((item: any) => {
+const PropData = PropsArr?.map((prop) => {
   return {
-    title: item.slug.title,
-    body: item.slug.body,
-    link_url: item.slug.link_url,
-    link_text: item.slug.link_text,
-    image: item.slug.image,
-    image_secondary: item.slug.image_secondary,
-    image_alt: item.slug.image_alt,
-    image_bg: item.slug.image_bg,
+    title: prop.title,
+    body: prop.body,
+    link_url: prop.link_url,
+    link_text: prop.link_text,
+    image: prop.image,
+    image_secondary: prop.image_secondary,
+    image_alt: prop.image_alt,
+    image_bg: prop.image_bg,
   };
 });
 
-const StaffData = StaffArr?.map((item: any) => {
+const StaffData = StaffArr?.map((staff) => {
   return {
-    title: item.slug.title,
-    icon: item.slug.icon,
-    name: item.slug.name,
-    body: item.slug.body,
-    image: item.slug.image,
-    order: item.slug.order,
+    title: staff.title,
+    icon: staff.icon ?? undefined,
+    name: staff.name,
+    body: staff.body,
+    image: staff.image ?? undefined,
+    order: staff.order,
   };
 });
 
@@ -54,6 +56,15 @@ const StaffData = StaffArr?.map((item: any) => {
 
 function determineSide(index: number) {
   return index % 2 == 0 ? "right" : "left";
+}
+
+export interface StaffDataType {
+  title: string;
+  icon: string | undefined;
+  name: string;
+  body: any;
+  image: string | undefined;
+  order: number;
 }
 ---
 
@@ -78,7 +89,9 @@ function determineSide(index: number) {
     <InterstitialImg label="Restaurant" src="/interstitial.jpg" />
     <section id="about" class="pb-16">
       {
-        StaffData?.sort((a: any, b: any) => a.order - b.order).map((person) => {
+        StaffData?.sort(
+          (a: StaffDataType, b: StaffDataType) => a.order - b.order
+        ).map((person) => {
           return (
             <Row side={determineSide(person.order)}>
               <StaffInfo
