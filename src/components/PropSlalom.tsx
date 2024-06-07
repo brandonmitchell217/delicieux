@@ -37,9 +37,10 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
   return (
     <div className="pt-24 sm:pt-32 pb-20 px-4 md:px-12 xl:px-4">
       <div
-        className={`w-full flex flex-col-reverse md:flex-row gap-12 md:gap-8 lg:gap-0 justify-center md:justify-between items-center ${
-          side === "left" ? null : twMerge("flex-row-reverse")
-        } `}
+        className={twMerge(
+          "w-full flex flex-col-reverse md:flex-row gap-12 md:gap-8 lg:gap-0 justify-center md:justify-between items-center",
+          side != "left" && "flex-row-reverse"
+        )}
       >
         <div className=" flex flex-col">
           <h2 className="relative font-crimson font-bold text-[88px] xl:text-[144px] leading-[.877em] w-max">

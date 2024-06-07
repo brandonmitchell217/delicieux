@@ -10,11 +10,10 @@ interface RowProps {
 export const Row = ({ side = "left", className, children }: RowProps) => {
   return (
     <div
-      className={`w-full flex ${
-        side === "left"
-          ? twMerge(className, "justify-start")
-          : twMerge(className, "justify-end")
-      }`}
+      className={twMerge(
+        `w-full flex ${className}`,
+        side === "left" ? "justify-start" : "justify-end"
+      )}
     >
       {children}
     </div>
