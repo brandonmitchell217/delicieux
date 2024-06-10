@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { twMerge } from "tailwind-merge";
 import type { Props } from "../../tina/__generated__/types";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
@@ -15,8 +15,6 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
   }
 
   const data = prop[0];
-  const imgArr = [data.image, data.image_secondary];
-  const [imageIndex, setImageIndex] = useState(0);
 
   const newArr = [
     {
@@ -28,20 +26,6 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
       image_alt: data.image_alt,
     },
   ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setImageIndex((prevIndex) => (prevIndex + 1) % imgArr.length);
-    }, 6000);
-
-    // console.log(data);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [imgArr.length]);
-
-  const imageSrc = imgArr[imageIndex] || "";
 
   return (
     <div className="pt-24 sm:pt-32 pb-20 px-4 md:px-12 xl:px-4">
@@ -82,12 +66,6 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
           </div>
         </div>
         <div className="relative max-w-[355px]">
-          {/* <img
-            src={imageSrc}
-            alt={`${data.title} image`}
-            loading="lazy"
-            className="shadow-sm max-w-[355px] w-[80vw] sm:w-[40vw] md:w-[30vw] h-auto"
-          /> */}
           <Carousel images={newArr} />
           {data.image_bg && (
             <div className="absolute -z-10 -right-4 -top-3 h-full w-full border-2 border-dark rounded-2xl"></div>
