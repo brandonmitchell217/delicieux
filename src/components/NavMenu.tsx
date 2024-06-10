@@ -36,7 +36,7 @@ export default function NavMenu({
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="hover:text-light/70 transition-all"
             >
-              About
+              About Us
             </a>
           </li>
           <li>

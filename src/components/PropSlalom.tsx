@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { twMerge } from "tailwind-merge";
 import type { Props } from "../../tina/__generated__/types";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { Carousel } from "./Carousel";
 
 interface SlalomProps {
   prop: Props[] | any;
   side?: "left" | "right";
 }
-
-// TODO: Figure out why image doesn't change on interval
-// TODO: Add in boolean for arrow/button for cta
 
 export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
   if (!prop) {
@@ -17,22 +15,17 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
   }
 
   const data = prop[0];
-  const imgArr = [data.image, data.image_secondary];
-  const [imageIndex, setImageIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setImageIndex((prevIndex) => (prevIndex + 1) % imgArr.length);
-    }, 6000);
-
-    // console.log(data);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [imgArr.length]);
-
-  const imageSrc = imgArr[imageIndex] || "";
+  const newArr = [
+    {
+      image: data.image,
+      image_alt: data.image_alt,
+    },
+    {
+      image: data.image_secondary,
+      image_alt: data.image_alt,
+    },
+  ];
 
   return (
     <div className="pt-24 sm:pt-32 pb-20 px-4 md:px-12 xl:px-4">
@@ -42,7 +35,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
           side != "left" && "flex-row-reverse"
         )}
       >
-        <div className=" flex flex-col">
+        <div className="flex flex-col">
           <h2 className="relative font-crimson font-bold text-[88px] xl:text-[144px] leading-[.877em] w-max">
             {data.title}
             <div className="absolute -z-10 h-2.5 w-[72%] bottom-0 right-2 bg-red rounded-full"></div>
@@ -72,13 +65,8 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
             </a>
           </div>
         </div>
-        <div className="relative">
-          <img
-            src={imageSrc}
-            alt={`${data.title} image`}
-            loading="lazy"
-            className="shadow-sm max-w-[355px] w-[80vw] sm:w-[40vw] md:w-[30vw] h-auto"
-          />
+        <div className="relative max-w-[355px]">
+          <Carousel images={newArr} />
           {data.image_bg && (
             <div className="absolute -z-10 -right-4 -top-3 h-full w-full border-2 border-dark rounded-2xl"></div>
           )}
