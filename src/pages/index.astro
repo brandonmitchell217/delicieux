@@ -9,6 +9,7 @@ import { Footer } from "../components/Footer";
 // import Banner from "../components/Banner";
 import client from "../../tina/__generated__/client";
 import type { Props } from "../../tina/__generated__/types";
+import { Carousel } from "../components/Carousel";
 
 const propResponse = await client.queries.propsConnection();
 const PropsArr = propResponse.data.propsConnection.edges?.map((item) => {
@@ -41,6 +42,7 @@ const PropData = PropsArr?.map((prop) => {
         class="w-[90%] md:max-w-[550px] h-auto m-auto"
       />
     </section>
+
     <section>
       <PropSlalom prop={PropData} client:load />
     </section>
