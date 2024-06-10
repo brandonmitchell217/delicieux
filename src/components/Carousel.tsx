@@ -39,7 +39,7 @@ export const Carousel = ({ images }: { images: PropsFilter[] }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="absolute -bottom-8 z-50 flex justify-evenly items-center w-full">
+      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-12">
         <button onClick={() => swiperRef?.current?.slidePrev()}>
           <ArrowLeftCircle />
         </button>
