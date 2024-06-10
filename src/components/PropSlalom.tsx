@@ -31,7 +31,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
     <div className="pt-24 sm:pt-32 pb-20 px-4 md:px-12 xl:px-4">
       <div
         className={twMerge(
-          "w-full flex flex-col-reverse md:flex-row gap-12 md:gap-8 lg:gap-0 justify-center md:justify-between items-center",
+          "w-full flex flex-col-reverse lg:flex-row gap-12 md:gap-8 lg:gap-0 justify-center md:justify-between items-center",
           side != "left" && "flex-row-reverse"
         )}
       >
@@ -46,7 +46,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
             </div>
             <a
               href={data.link_url as string}
-              className="md:ml-4 font-crimson text-[20px] lg:text-[28px] tracking-[.02em] flex items-center gap-4 md:gap-8 group"
+              className="md:ml-4 font-crimson text-[20px] lg:text-[24px] xl:text-[28px] tracking-[.02em] leading-none flex items-center gap-4 md:gap-8 group"
             >
               {data.link_text}
               <svg
@@ -68,7 +68,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
         <div className="relative max-w-[355px]">
           <Carousel images={newArr} />
           {data.image_bg && (
-            <div className="absolute -z-10 -right-4 -top-3 h-full w-full border-2 border-dark rounded-2xl"></div>
+            <div className="hidden sm:block absolute -z-10 right-0 sm:-right-4 -top-3 h-full w-full border-2 border-dark rounded-2xl"></div>
           )}
         </div>
       </div>

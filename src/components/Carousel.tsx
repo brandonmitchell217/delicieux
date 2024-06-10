@@ -33,8 +33,8 @@ export const Carousel = ({ images }: { images: PropsFilter[] }) => {
           <SwiperSlide key={index}>
             <img
               src={image.image as DetailedHTMLProps<any, any>["src"]}
-              alt="sdfefesa"
-              className="shadow-sm max-w-[355px] w-[80vw] sm:w-[40vw] md:w-[30vw] h-auto"
+              alt={image.image_alt as DetailedHTMLProps<any, any>["alt"]}
+              className="shadow-sm max-w-[355px] w-[80vw] sm:w-[40vw] h-auto"
             />
           </SwiperSlide>
         ))}
