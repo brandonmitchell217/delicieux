@@ -16,6 +16,8 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
 
   const data = prop[0];
 
+  console.log(data);
+
   const newArr = [
     {
       image: data.image,
@@ -23,6 +25,14 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
     },
     {
       image: data.image_secondary,
+      image_alt: data.image_alt,
+    },
+    {
+      image: data.image_third,
+      image_alt: data.image_alt,
+    },
+    {
+      image: data.image_fourth,
       image_alt: data.image_alt,
     },
   ];
