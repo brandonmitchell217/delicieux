@@ -13,6 +13,8 @@ fragment PropsParts on Props {
   link_url
   image
   image_secondary
+  image_third
+  image_fourth
   image_alt
   image_bg
 }

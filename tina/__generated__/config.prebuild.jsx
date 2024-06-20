@@ -96,6 +96,16 @@ var config_default = defineConfig({
           },
           {
             type: "string",
+            name: "image_third",
+            label: "Third Image"
+          },
+          {
+            type: "string",
+            name: "image_fourth",
+            label: "Fourth Image"
+          },
+          {
+            type: "string",
             name: "image_alt",
             label: "Image Alt Text"
           },

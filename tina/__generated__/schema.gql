@@ -142,6 +142,8 @@ type Props implements Node & Document {
   link_url: String
   image: String
   image_secondary: String
+  image_third: String
+  image_fourth: String
   image_alt: String
   image_bg: Boolean
   id: ID!
@@ -161,6 +163,8 @@ input PropsFilter {
   link_url: StringFilter
   image: StringFilter
   image_secondary: StringFilter
+  image_third: StringFilter
+  image_fourth: StringFilter
   image_alt: StringFilter
   image_bg: BooleanFilter
 }
@@ -259,6 +263,8 @@ input PropsMutation {
   link_url: String
   image: String
   image_secondary: String
+  image_third: String
+  image_fourth: String
   image_alt: String
   image_bg: Boolean
 }

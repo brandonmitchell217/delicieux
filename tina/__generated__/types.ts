@@ -254,6 +254,8 @@ export type Props = Node & Document & {
   link_url?: Maybe<Scalars['String']['output']>;
   image?: Maybe<Scalars['String']['output']>;
   image_secondary?: Maybe<Scalars['String']['output']>;
+  image_third?: Maybe<Scalars['String']['output']>;
+  image_fourth?: Maybe<Scalars['String']['output']>;
   image_alt?: Maybe<Scalars['String']['output']>;
   image_bg?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['ID']['output'];
@@ -273,6 +275,8 @@ export type PropsFilter = {
   link_url?: InputMaybe<StringFilter>;
   image?: InputMaybe<StringFilter>;
   image_secondary?: InputMaybe<StringFilter>;
+  image_third?: InputMaybe<StringFilter>;
+  image_fourth?: InputMaybe<StringFilter>;
   image_alt?: InputMaybe<StringFilter>;
   image_bg?: InputMaybe<BooleanFilter>;
 };
@@ -440,6 +444,8 @@ export type PropsMutation = {
   link_url?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
   image_secondary?: InputMaybe<Scalars['String']['input']>;
+  image_third?: InputMaybe<Scalars['String']['input']>;
+  image_fourth?: InputMaybe<Scalars['String']['input']>;
   image_alt?: InputMaybe<Scalars['String']['input']>;
   image_bg?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -455,7 +461,7 @@ export type StaffMutation = {
 
 export type MenuPartsFragment = { __typename?: 'Menu', title: string, body?: any | null, price?: string | null, type?: string | null, menu?: string | null };
 
-export type PropsPartsFragment = { __typename?: 'Props', title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_alt?: string | null, image_bg?: boolean | null };
+export type PropsPartsFragment = { __typename?: 'Props', title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_third?: string | null, image_fourth?: string | null, image_alt?: string | null, image_bg?: boolean | null };
 
 export type StaffPartsFragment = { __typename?: 'Staff', title: string, icon?: string | null, name: string, body: any, image?: string | null, order: number };
 
@@ -483,7 +489,7 @@ export type PropsQueryVariables = Exact<{
 }>;
 
 
-export type PropsQuery = { __typename?: 'Query', props: { __typename?: 'Props', id: string, title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_alt?: string | null, image_bg?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PropsQuery = { __typename?: 'Query', props: { __typename?: 'Props', id: string, title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_third?: string | null, image_fourth?: string | null, image_alt?: string | null, image_bg?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type PropsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -495,7 +501,7 @@ export type PropsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PropsConnectionQuery = { __typename?: 'Query', propsConnection: { __typename?: 'PropsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PropsConnectionEdges', cursor: string, node?: { __typename?: 'Props', id: string, title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_alt?: string | null, image_bg?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type PropsConnectionQuery = { __typename?: 'Query', propsConnection: { __typename?: 'PropsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PropsConnectionEdges', cursor: string, node?: { __typename?: 'Props', id: string, title: string, body?: any | null, link_text?: string | null, link_url?: string | null, image?: string | null, image_secondary?: string | null, image_third?: string | null, image_fourth?: string | null, image_alt?: string | null, image_bg?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type StaffQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -533,6 +539,8 @@ export const PropsPartsFragmentDoc = gql`
   link_url
   image
   image_secondary
+  image_third
+  image_fourth
   image_alt
   image_bg
 }
