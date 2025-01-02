@@ -26,7 +26,6 @@ export const Carousel = ({ images }: { images: PropsFilter[] }) => {
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        onSlideChange={() => console.log("slide change")}
         className="relative"
       >
         {images.map((image, index) => (

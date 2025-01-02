@@ -16,7 +16,7 @@ export const PropSlalom = ({ prop, side = "left" }: SlalomProps) => {
 
   const data = prop[0];
 
-  console.log(data);
+  // console.log(data);
 
   const newArr = [
     {

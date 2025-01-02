@@ -11,7 +11,11 @@ export const StaffInfo = ({ person, side }: StaffInfoProps) => {
   if (!person) return null;
 
   return (
-    <div className="py-12 md:py-8 lg:py-0 px-8 md:px-4 overflow-x-hidden">
+    <div
+    className="py-12 md:py-8 lg:py-0 px-8 md:px-4 overflow-x-hidden"
+    data-aos="fade-up"
+    data-aos-easing="linear"
+    data-aos-duration="1500">
       <div
         className={twMerge(
           "flex flex-col gap-8 lg:gap-[30px] justify-center md:justify-stretch items-center md:max-w-[868px]",

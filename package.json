@@ -15,6 +15,7 @@
     "@astrojs/tailwind": "^4.0.0",
     "@astrojs/ts-plugin": "^1.1.1",
     "@tinacms/cli": "^1.5.29",
+    "aos": "^2.3.4",
     "astro": "^2.10.9",
     "astro-font": "^0.0.77",
     "lucide-react": "^0.268.0",
@@ -24,6 +25,7 @@
     "tinacms": "^1.5.20"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/node": "^20.6.2",
     "@types/react": "^18.2.20",
     "tailwind-merge": "^1.14.0",

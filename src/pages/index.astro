@@ -36,14 +36,15 @@ const PropData = PropsArr?.map((prop) => {
   <!-- <Banner /> -->
   <Nav client:load />
   <main>
-    <section class="space-y-12 sm:space-y-24">
+    <section class="mb-12 sm:mb-24">
       <Landing bgImage={"landing"} content={true} />
-      <img
+    </section>
+
+        <img
         src="/fancyLines1.png"
         alt="fancy lines"
         class="w-[90%] md:max-w-[550px] h-auto m-auto"
       />
-    </section>
 
     <section>
       <PropSlalom prop={PropData} client:load />
